@@ -330,13 +330,13 @@ footer a{color:var(--red);text-decoration:none;font-weight:700}
 <!-- JAPAN MAP -->
 <section class="map-section wrap" id="map" aria-label="日本地図から探す">
   <div class="map-head">
-    <h2>日本地図から探す</h2>
-    <p>地域 → 都道府県の順にタップすると、県単位まで絞り込めます</p>
+    <h2>日本地図から探す（実店舗）</h2>
+    <p>実店舗で買えるものだけを表示 ・ 地域 → 都道府県の順にタップ</p>
   </div>
-  <p class="map-lead">まず地図で<b>地方</b>を選ぶと、その下に<b>都道府県タイル</b>が出てきます。県をタップすれば、その県で買える福袋だけに絞り込めます（下の絞り込みバーにある都道府県プルダウンから直接選ぶこともできます）。全国オンラインと全国の店舗で買える福袋は<b>どの県でも買える</b>として数えていて、いま県で差が出るのは京都発・関西中心の「よーじや」で、関西の各県では<b>13件すべて</b>、ほかの県は<b>12件</b>が表示されます。地図は位置関係が分かるタイルマップ（模式図）です。</p>
+  <p class="map-lead">この地図は<b>実店舗で買える福袋だけ</b>を数えています（<b>実店舗のみ</b>と<b>両方OK</b>のもの。オンラインでも買える「両方OK」も、店頭で買えるため含みます）。まず地図で<b>地方</b>を選ぶと、その下に<b>都道府県タイル</b>が出てきます。県をタップすれば、その県の店頭で買える福袋だけに絞り込めます（下の絞り込みバーにある都道府県プルダウンから直接選ぶこともできます）。全国の店舗で買える福袋は<b>どの県でも買える</b>として数えていて、いま県で差が出るのは京都発・関西中心の「よーじや」で、関西の各県では<b>9件</b>、ほかの県は<b>8件</b>が表示されます。<b>オンラインのみの4件</b>（スタバ、Zoff、フェイラー、ジェラピケ）は地図には含めず、地図横の「オンラインのみ」ボタンや買い方フィルタから探せます。地図は位置関係が分かるタイルマップ（模式図）です。</p>
   <div class="map-layout">
     <div class="map-board">
-      <div class="map-board-label"><span>日本地図 — 地域タイル</span><span id="mapSelectedLabel">現在：全国を表示中</span></div>
+      <div class="map-board-label"><span>日本地図 — 実店舗で買える福袋（地域タイル）</span><span id="mapSelectedLabel">現在：全国（実店舗）を表示中</span></div>
       <div class="japan-map" id="japanMap" role="group" aria-label="地域を選ぶ日本地図"></div>
       <p class="tile-note">※ タイルの大きさは面積ではなく、地域ごとのまとまりを表しています。沖縄は九州の南西に配置した模式図です。</p>
       <div class="pref-area" id="prefArea" aria-label="都道府県で絞り込む"></div>
@@ -345,7 +345,7 @@ footer a{color:var(--red);text-decoration:none;font-weight:700}
       <div class="map-panel" id="mapPanel"></div>
       <div class="map-quick">
         <button class="quick-card" data-map-quick="online"><b>オンラインのみ</b><span>店頭販売はなく、抽選・先着にスマホで申込。自宅に届くタイプだけを見る。</span><span class="n" id="quickOnlineCount"></span></button>
-        <button class="quick-card" data-map-quick="all"><b>全国すべて</b><span>地域で絞らず、掲載中の福袋を全部見比べる。</span><span class="n">13 件の福袋 →</span></button>
+        <button class="quick-card" data-map-quick="all"><b>全国すべて</b><span>地域で絞らず、掲載中の福袋を全部（オンライン含む）見比べる。地図の絞り込みを解除する。</span><span class="n">全13 件の福袋 →</span></button>
       </div>
     </div>
   </div>
@@ -599,7 +599,7 @@ function cdDays(item){ var c = cdOf(item); return c ? Math.round((dparse(c.date)
 function cdWord(item){ var c = cdOf(item); if(!c) return ""; return c.kind==="deadline" ? "締切まで" : (c.kind==="sale" ? "発売まで" : "開始まで"); }
 
 var REGIONS = [
-  { key:"hokkaido", label:"北海道", note:"道内店舗＋オンライン" },
+  { key:"hokkaido", label:"北海道", note:"道内店舗" },
   { key:"tohoku", label:"東北", note:"青森・岩手・宮城・秋田・山形・福島" },
   { key:"kanto", label:"関東", note:"東京・神奈川・千葉・埼玉ほか" },
   { key:"chubu", label:"中部", note:"愛知・静岡・長野・新潟ほか" },
@@ -607,15 +607,18 @@ var REGIONS = [
   { key:"chugoku", label:"中国", note:"広島・岡山・山口ほか" },
   { key:"shikoku", label:"四国", note:"愛媛・香川・徳島・高知" },
   { key:"kyushu", label:"九州", note:"福岡・熊本・鹿児島ほか" },
-  { key:"okinawa", label:"沖縄", note:"沖縄県内店舗＋オンライン" }
+  { key:"okinawa", label:"沖縄", note:"沖縄県内店舗" }
 ];
 var ALL_REGION_KEYS = REGIONS.map(function(r){ return r.key; });
+function isStoreAvailable(it){ return channelOf(it) !== "online"; }
+function storeAvailableCount(){ return ITEMS.filter(function(it){ return isStoreAvailable(it); }).length; }
 function itemRegions(it){
+  if(!isStoreAvailable(it)) return [];
   if(it.area === "kansai") return ["kansai"];
   return ALL_REGION_KEYS.slice();
 }
 function regionCount(key){
-  if(key === "all") return ITEMS.length;
+  if(key === "all") return storeAvailableCount();
   return ITEMS.filter(function(it){ return itemRegions(it).indexOf(key) >= 0; }).length;
 }
 function regionLabel(key){
@@ -641,6 +644,7 @@ function prefsOfRegion(regionKey){ return PREFS.filter(function(p){ return p.reg
 function prefObj(key){ for(var i=0;i<PREFS.length;i++){ if(PREFS[i].key===key) return PREFS[i]; } return null; }
 function prefLabel(key){ var p = prefObj(key); return p ? p.label : ""; }
 function itemPrefectures(it){
+  if(!isStoreAvailable(it)) return [];
   if(it.area === "kansai") return KANSAI_PREF_KEYS.slice();
   return ALL_PREF_KEYS.slice();
 }
@@ -773,25 +777,25 @@ function renderMap(){
       var n = regionCount(r.key);
       var cls = r.key === "kyushu" ? "kyushu" : r.key;
       // kyushu tile covers Kyushu label; okinawa is separate tile but shares count logic
-      return '<button class="tile '+cls+'" data-region="'+r.key+'" aria-pressed="'+(state.region===r.key)+'" aria-label="'+r.label+'で絞り込む（'+n+'件）"><b>'+r.label+'</b><span>'+n+'件</span><small>'+(r.key==="kansai" ? "地域限定あり" : "全国対応含む")+'</small></button>';
+      return '<button class="tile '+cls+'" data-region="'+r.key+'" aria-pressed="'+(state.region===r.key)+'" aria-label="'+r.label+'の実店舗で買える福袋で絞り込む（'+n+'件）"><b>'+r.label+'</b><span>'+n+'件</span><small>'+(r.key==="kansai" ? "地域限定あり" : "店頭で買える")+'</small></button>';
     }).join("");
   }
   var labelEl = document.getElementById("mapSelectedLabel");
   if(labelEl){
-    labelEl.textContent = state.pref!=="all" ? "現在：" + prefLabel(state.pref) + "で絞り込み中" : (state.region==="all" ? "現在：全国を表示中" : "現在：" + regionLabel(state.region) + "で絞り込み中");
+    labelEl.textContent = state.pref!=="all" ? "現在：" + prefLabel(state.pref) + "（実店舗）で絞り込み中" : (state.region==="all" ? "現在：全国（実店舗）を表示中" : "現在：" + regionLabel(state.region) + "（実店舗）で絞り込み中");
   }
   var prefArea = document.getElementById("prefArea");
   if(prefArea){
     if(state.region==="all"){
-      prefArea.innerHTML = '<p class="pref-hint">都道府県まで絞るには、上の地図で地方タイルをタップしてください。その地方の都道府県タイルがここに並びます。下の絞り込みバーの都道府県プルダウンから、県を直接選ぶこともできます。</p>';
+      prefArea.innerHTML = '<p class="pref-hint">都道府県まで絞るには、上の地図で地方タイルをタップしてください。その地方の都道府県タイルがここに並びます（件数はいずれも実店舗で買えるものだけです）。下の絞り込みバーの都道府県プルダウンから、県を直接選ぶこともできます。</p>';
     } else {
       var rprefs = prefsOfRegion(state.region);
-      prefArea.innerHTML = '<div class="pref-area-head"><b>' + regionLabel(state.region) + 'の都道府県</b><span>県をタップで絞り込み</span></div>'
+      prefArea.innerHTML = '<div class="pref-area-head"><b>' + regionLabel(state.region) + 'の都道府県（実店舗）</b><span>県をタップで絞り込み ・ 件数は実店舗のみ</span></div>'
         + '<div class="pref-grid">'
         + '<button class="pref-tile wide" data-pref-all="1" aria-pressed="'+(state.pref==="all")+'"><b>' + regionLabel(state.region) + '全体</b><span>' + regionCount(state.region) + '件</span></button>'
         + rprefs.map(function(p){
             var n = prefCount(p.key);
-            return '<button class="pref-tile" data-pref="'+p.key+'" aria-pressed="'+(state.pref===p.key)+'" aria-label="'+p.label+'で絞り込む（'+n+'件）"><b>'+p.label+'</b><span>'+n+'件</span></button>';
+            return '<button class="pref-tile" data-pref="'+p.key+'" aria-pressed="'+(state.pref===p.key)+'" aria-label="'+p.label+'の実店舗で買える福袋で絞り込む（'+n+'件）"><b>'+p.label+'</b><span>'+n+'件</span></button>';
           }).join("")
         + '</div>';
     }
@@ -800,20 +804,20 @@ function renderMap(){
   if(panel){
     if(state.pref!=="all"){
       var pn = prefCount(state.pref);
-      var pextra = prefObj(state.pref).region==="kansai" ? "関西の県なので、京都発「よーじや」を含む掲載中の全13件が対象です。" : "全国オンライン・全国店舗の12件が対象です。関西限定の「よーじや」は含まれません。";
-      panel.innerHTML = '<div class="kicker">選択中の都道府県</div><h3>'+prefLabel(state.pref)+' — <b>'+pn+'件</b></h3><p>'+regionLabel(prefObj(state.pref).region)+'地方の県です。'+pextra+'</p><div class="map-panel-actions"><button class="primary" data-map-action="list">この県の一覧を見る ↓</button><button data-map-action="region">地方全体に戻す</button><button data-map-action="all">全国に戻す</button></div>';
+      var pextra = prefObj(state.pref).region==="kansai" ? "関西の県なので、京都発「よーじや」を含む実店舗で買える9件が対象です（オンラインのみの福袋は含みません）。" : "全国の店舗で買える実店舗向けの8件が対象です。関西限定の「よーじや」と、オンラインのみの福袋は含まれません。";
+      panel.innerHTML = '<div class="kicker">選択中の都道府県（実店舗）</div><h3>'+prefLabel(state.pref)+' — <b>'+pn+'件</b></h3><p>'+regionLabel(prefObj(state.pref).region)+'地方の県です。'+pextra+'</p><div class="map-panel-actions"><button class="primary" data-map-action="list">この県の一覧を見る ↓</button><button data-map-action="region">地方全体に戻す</button><button data-map-action="all">全国に戻す</button></div>';
     } else if(state.region==="all"){
-      panel.innerHTML = '<div class="kicker">選択中の地域</div><h3>全国 — <b>13件</b></h3><p>地図の地域タイルをタップすると、その地域で買える福袋だけに一覧が切り替わります。地方を選ぶと都道府県タイルも出てきて、県単位まで絞れます。買い方はカード上部の色帯で区別できます（青＝オンラインのみ ' + channelCount("online") + '件／オレンジ＝実店舗のみ ' + channelCount("store") + '件／緑＝両方OK ' + channelCount("both") + '件）で、関西には京都の「よーじや」が加わります。</p><div class="map-panel-actions"><button class="primary" data-map-action="kansai">関西（13件）を見る</button><button data-map-action="online">オンラインのみ</button></div>';
+      panel.innerHTML = '<div class="kicker">選択中の地域（実店舗）</div><h3>全国（実店舗） — <b>'+storeAvailableCount()+'件</b></h3><p>地図の地域タイルをタップすると、その地域の実店舗で買える福袋だけに一覧が切り替わります。地方を選ぶと都道府県タイルも出てきて、県単位まで絞れます。地図に含むのは実店舗のみ ' + channelCount("store") + '件と両方OK ' + channelCount("both") + '件で、オンラインのみ ' + channelCount("online") + '件は含みません（オンラインのみは下のボタンや買い方フィルタから）。関西には京都の「よーじや」が加わります。</p><div class="map-panel-actions"><button class="primary" data-map-action="kansai">関西（9件）を見る</button><button data-map-action="online">オンラインのみ</button></div>';
     } else {
       var rn = regionCount(state.region);
-      var extra = state.region==="kansai" ? "京都発「よーじや」を含む、掲載中の全13件が対象です。" : "全国オンライン・全国店舗の12件が対象です。関西限定の「よーじや」は含まれません。";
+      var extra = state.region==="kansai" ? "京都発「よーじや」を含む、実店舗で買える9件が対象です（オンラインのみの福袋は含みません）。" : "全国の店舗で買える実店舗向けの8件が対象です。関西限定の「よーじや」と、オンラインのみの福袋は含まれません。";
       var regionObj = REGIONS.filter(function(r){return r.key===state.region;})[0];
-      panel.innerHTML = '<div class="kicker">選択中の地域</div><h3>'+regionObj.label+' — <b>'+rn+'件</b></h3><p>'+regionObj.note+'。'+extra+'地図の下の都道府県タイルから、県単位まで絞り込めます。</p><div class="map-panel-actions"><button class="primary" data-map-action="list">この地域の一覧を見る ↓</button><button data-map-action="all">全国に戻す</button></div>';
+      panel.innerHTML = '<div class="kicker">選択中の地域（実店舗）</div><h3>'+regionObj.label+' — <b>'+rn+'件</b></h3><p>'+regionObj.note+'。'+extra+'地図の下の都道府県タイルから、県単位まで絞り込めます。</p><div class="map-panel-actions"><button class="primary" data-map-action="list">この地域の一覧を見る ↓</button><button data-map-action="all">全国に戻す</button></div>';
     }
   }
   var sel = document.getElementById("prefSelect");
   if(sel){
-    sel.innerHTML = '<option value="all">都道府県：すべて</option>' + REGIONS.map(function(r){
+    sel.innerHTML = '<option value="all">都道府県（実店舗）：すべて</option>' + REGIONS.map(function(r){
       return '<optgroup label="'+r.label+'">' + prefsOfRegion(r.key).map(function(p){
         return '<option value="'+p.key+'"'+(state.pref===p.key ? ' selected' : '')+'>'+p.label+'（'+prefCount(p.key)+'件）</option>';
       }).join("") + '</optgroup>';
