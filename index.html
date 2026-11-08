@@ -15,11 +15,17 @@
   --red:#b91f24; --red-dark:#8f151a; --gold:#b98a1e; --gold-bg:#fdf3d7;
   --green:#1e5c46; --plum:#8a3b5e; --navy:#2b4a67; --brown:#7a4a21; --teal:#17616b; --olive:#5a6b2f;
   --chip:#f3e9da; --shadow:0 10px 30px rgba(80,40,10,.10);
+  --ch-online:#1d5fb8; --ch-online-bg:#e3edfb; --ch-online-ink:#144a8f;
+  --ch-store:#b45309; --ch-store-bg:#fdeeda; --ch-store-ink:#8a3d06;
+  --ch-both:#18794e; --ch-both-bg:#e0f2e6; --ch-both-ink:#125c3a;
   color-scheme: light dark;
 }
 @media (prefers-color-scheme: dark){
   :root{ --bg:#171211; --surface:#221b18; --surface2:#2a211d; --ink:#f5ece3; --ink2:#c9b8ab; --line:#3d322b;
-  --red:#e5534b; --red-dark:#ff7a72; --gold:#e0b34c; --gold-bg:#3a2f16; --chip:#2e2622; --shadow:0 10px 30px rgba(0,0,0,.45); }
+  --red:#e5534b; --red-dark:#ff7a72; --gold:#e0b34c; --gold-bg:#3a2f16; --chip:#2e2622; --shadow:0 10px 30px rgba(0,0,0,.45);
+  --ch-online:#7db0f0; --ch-online-bg:#1c3355; --ch-online-ink:#bcd7ff;
+  --ch-store:#f0a35e; --ch-store-bg:#4a2c12; --ch-store-ink:#ffd9ad;
+  --ch-both:#5ec48f; --ch-both-bg:#173b2c; --ch-both-ink:#a9e8c6; }
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -83,6 +89,23 @@ select.sort{font:inherit;font-size:14px;font-weight:700;padding:12px 12px;border
 .chip:hover{border-color:var(--red)}
 .chip[aria-pressed="true"]{background:var(--red);border-color:var(--red);color:#fff}
 .chip.area[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+/* Channel (EC vs store) filter */
+.chips.channel-row{margin-top:10px;padding:10px 12px;background:var(--surface);border:1px solid var(--line);border-radius:14px;align-items:center}
+.chips.channel-row .lab{color:var(--ink)}
+.chip.channel{display:inline-flex;align-items:center;gap:7px}
+.chip.channel .dotc{width:9px;height:9px;border-radius:50%;flex:0 0 auto}
+.chip.channel .cnt{font-size:11px;opacity:.75;font-weight:800}
+.chip.channel[data-channel="online"] .dotc{background:var(--ch-online)}
+.chip.channel[data-channel="store"] .dotc{background:var(--ch-store)}
+.chip.channel[data-channel="both"] .dotc{background:var(--ch-both)}
+.chip.channel[data-channel="online"][aria-pressed="true"]{background:var(--ch-online);border-color:var(--ch-online);color:#fff}
+.chip.channel[data-channel="store"][aria-pressed="true"]{background:var(--ch-store);border-color:var(--ch-store);color:#fff}
+.chip.channel[data-channel="both"][aria-pressed="true"]{background:var(--ch-both);border-color:var(--ch-both);color:#fff}
+.chip.channel[aria-pressed="true"] .dotc{background:#fff}
+.channel-legend{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:10px;font-size:12px;color:var(--ink2);line-height:1.6}
+.channel-legend span{display:inline-flex;align-items:center;gap:6px}
+.channel-legend i{width:10px;height:10px;border-radius:3px;display:inline-block;flex:0 0 auto}
+.channel-legend i.on{background:var(--ch-online)} .channel-legend i.st{background:var(--ch-store)} .channel-legend i.bo{background:var(--ch-both)}
 
 /* ---------- GRID / CARDS ---------- */
 main{padding:26px 0 10px}
@@ -93,6 +116,16 @@ main{padding:26px 0 10px}
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 2px 10px rgba(80,40,10,.05);transition:transform .18s ease, box-shadow .18s ease}
 .card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.card.channel-online{border-top:5px solid var(--ch-online)}
+.card.channel-store{border-top:5px solid var(--ch-store)}
+.card.channel-both{border-top:5px solid var(--ch-both)}
+.channel-strip{display:flex;align-items:center;gap:8px;padding:9px 14px;font-size:13px;font-weight:900;letter-spacing:.02em;line-height:1.3}
+.channel-strip small{font-size:11px;font-weight:700;opacity:.92}
+.channel-strip.online{background:var(--ch-online);color:#fff}
+.channel-strip.store{background:var(--ch-store);color:#fff}
+.channel-strip.both{background:var(--ch-both);color:#fff}
+@media (prefers-color-scheme: dark){.channel-strip.online,.channel-strip.store,.channel-strip.both{color:#101418}}
+.channel-strip svg{flex:0 0 auto}
 .card-banner{position:relative;height:118px;padding:16px;color:#fff;overflow:hidden}
 .card-banner::after{content:"";position:absolute;inset:0;background:
   radial-gradient(circle at 88% 18%, rgba(255,255,255,.20) 0 26px, transparent 27px),
@@ -109,6 +142,11 @@ main{padding:26px 0 10px}
 .badge.status-soon{background:var(--gold-bg);color:var(--gold)}
 .badge.status-ended{background:#f3e2e2;color:var(--red)}
 .badge.method{background:var(--ink);color:var(--bg)}
+.badge.channel-badge{font-size:12px;padding:5px 10px;border-radius:999px;display:inline-flex;align-items:center;gap:6px}
+.badge.channel-badge::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor;opacity:.9}
+.badge.channel-badge.online{background:var(--ch-online-bg);color:var(--ch-online-ink)}
+.badge.channel-badge.store{background:var(--ch-store-bg);color:var(--ch-store-ink)}
+.badge.channel-badge.both{background:var(--ch-both-bg);color:var(--ch-both-ink)}
 @media (prefers-color-scheme: dark){.badge.status-active{background:#173b2c;color:#7ed6ae}.badge.status-ended{background:#402222;color:#ff9d94}}
 .card h3{margin:0;font-size:17.5px;line-height:1.45;font-weight:900}
 .price-row{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
@@ -268,7 +306,7 @@ footer a{color:var(--red);text-decoration:none;font-weight:700}
         <span class="pill">2027年 新春福袋シーズン</span>
       </div>
       <h1>福袋ナビ <span class="yr">2027</span><br>迷ったら、締切の近い順。</h1>
-      <p class="hero-sub">スタバの抽選は11月15日まで、コメダは11月11日から店頭予約スタート。今年の福袋は「抽選・先着・店頭予約」が入り混じるから、買い方と締切を1枚で見比べられるようにまとめました。全国オンラインと地域の店頭販売、どちらも探せます。</p>
+      <p class="hero-sub">スタバの抽選は11月15日まで、コメダは11月11日から店頭予約スタート。今年の福袋は「抽選・先着・店頭予約」が入り混じるから、買い方と締切を1枚で見比べられるようにまとめました。各カードの色帯で、<b>青＝オンラインのみ／オレンジ＝実店舗のみ／緑＝両方OK</b> が一目で分かります。</p>
       <div class="hero-stats">
         <div class="stat"><b id="statTotal">–</b><span>掲載中の福袋</span></div>
         <div class="stat"><b id="statActive">–</b><span>いま申込・予約できる</span></div>
@@ -306,7 +344,7 @@ footer a{color:var(--red);text-decoration:none;font-weight:700}
     <div class="map-side">
       <div class="map-panel" id="mapPanel"></div>
       <div class="map-quick">
-        <button class="quick-card" data-map-quick="online"><b>全国オンライン</b><span>抽選・先着にスマホで申込。自宅に届くタイプだけを見る。</span><span class="n" id="quickOnlineCount"></span></button>
+        <button class="quick-card" data-map-quick="online"><b>オンラインのみ</b><span>店頭販売はなく、抽選・先着にスマホで申込。自宅に届くタイプだけを見る。</span><span class="n" id="quickOnlineCount"></span></button>
         <button class="quick-card" data-map-quick="all"><b>全国すべて</b><span>地域で絞らず、掲載中の福袋を全部見比べる。</span><span class="n">13 件の福袋 →</span></button>
       </div>
     </div>
@@ -330,11 +368,19 @@ footer a{color:var(--red);text-decoration:none;font-weight:700}
       </select>
       <button class="fav-toggle" id="favOnly" aria-pressed="false">★ お気に入りのみ</button>
     </div>
+    <div class="chips channel-row" id="channelChips" role="group" aria-label="販売チャネルで絞り込み">
+      <span class="lab">買い方</span>
+    </div>
+    <div class="channel-legend" aria-label="買い方の色の説明">
+      <span><i class="on"></i><b>オンライン</b>＝ネットのみ（店頭販売なし）</span>
+      <span><i class="st"></i><b>実店舗</b>＝お店のみ（オンライン販売なし）</span>
+      <span><i class="bo"></i><b>両方OK</b>＝オンラインでも実店舗でも買える</span>
+    </div>
     <div class="chips" id="catChips" role="group" aria-label="カテゴリで絞り込み">
       <span class="lab">カテゴリ</span>
     </div>
-    <div class="chips" id="areaChips" role="group" aria-label="地域・買い方で絞り込み">
-      <span class="lab">地域・買い方</span>
+    <div class="chips" id="areaChips" role="group" aria-label="地域で絞り込み">
+      <span class="lab">地域</span>
     </div>
   </div>
 </div>
@@ -348,10 +394,10 @@ footer a{color:var(--red);text-decoration:none;font-weight:700}
   <div class="grid" id="grid"></div>
   <div class="empty" id="empty"><b>条件に合う福袋が見つかりませんでした</b>キーワードや絞り込みをゆるめて、もう一度探してみてください。</div>
 
-  <!-- AREA -->
+  <!-- AREA / CHANNEL -->
   <div class="sec-head" style="margin-top:44px">
-    <h2>地域・買い方から探す</h2>
-    <p>タップすると一覧が絞り込まれます</p>
+    <h2>買い方から探す</h2>
+    <p>カード上部の色帯と同じ色です。タップすると一覧が絞り込まれます</p>
   </div>
   <div class="areas" id="areas"></div>
 
@@ -398,7 +444,7 @@ var TODAY = new Date(2026, 10, 8); // 2026-11-08 時点の情報で表示
 
 var ITEMS = [
   { id:"starbucks", brand:"スターバックス", name:"スターバックス福袋 2027", price:9500, priceLabel:"¥9,500", worth:"ドリンクチケット7枚入り",
-    cat:"coffee", catLabel:"コーヒー・カフェ", area:"online", areaLabel:"全国オンライン", method:"抽選", status:"active",
+    cat:"coffee", catLabel:"コーヒー・カフェ", area:"online", channel:"online", areaLabel:"全国オンライン", method:"抽選", status:"active",
     start:"2026-11-04", deadline:"2026-11-15", deadlineLabel:"11月15日（日）23:59",
     color:"#1e5c46", kanji:"珈",
     desc:"絞って形を変えられるトートバッグ、福袋限定ステンレスボトル、コーヒー豆、ドリンクチケット7枚のセット。店頭販売はなく、公式オンラインストアの抽選のみ。",
@@ -406,7 +452,7 @@ var ITEMS = [
     note:"エントリーには My Starbucks の本会員登録が必要です（アプリ仮会員は対象外）。当選発表は11月25日、配送は2027年1月1日〜7日。ゴールド会員は自動で2口分として抽選されます。",
     url:"https://www.oricon.co.jp/news/2489720/full/", urlLabel:"詳細ニュース（ORICON）" },
   { id:"yojiya", brand:"よーじや", name:"よーじや 福袋 2027", price:null, priceLabel:"公式で確認", worth:"約¥26,000相当入り",
-    cat:"beauty", catLabel:"コスメ・美容", area:"kansai", areaLabel:"京都・オンライン", method:"先着予約", status:"soon",
+    cat:"beauty", catLabel:"コスメ・美容", area:"kansai", channel:"both", areaLabel:"京都・オンライン", method:"先着予約", status:"soon",
     start:"2026-11-15", deadline:"2026-12-01", deadlineLabel:"オンライン 11月15日〜／店頭予約 12月1日〜",
     color:"#8a3b5e", kanji:"粧",
     desc:"京都発のあぶらとり紙で知られるブランド。人気の香りシリーズ「まゆごもり」「はなほのか」「ゆずつやや」のスキンケアなど全12点。届くのはランダムA／Bのどちらか。",
@@ -414,7 +460,7 @@ var ITEMS = [
     note:"いちばん早いのは公式オンラインショップで11月15日（日）10:00から。店頭予約は12月1日からで、オンラインより遅いので注意。",
     url:"https://kobe-journal.com/archives/8698846356.html", urlLabel:"紹介記事（神戸ジャーナル）" },
   { id:"seijoishii", brand:"成城石井", name:"成城石井 福袋 2027", price:3490, priceLabel:"¥3,490〜6,390", worth:null,
-    cat:"food", catLabel:"食品・グルメ", area:"store", areaLabel:"全国の店舗・オンライン", method:"予約", status:"active",
+    cat:"food", catLabel:"食品・グルメ", area:"store", channel:"both", areaLabel:"全国の店舗・オンライン", method:"予約", status:"active",
     start:"2026-11-01", deadline:"2026-12-25", deadlineLabel:"予約受付中（上限に達し次第終了）",
     color:"#5a6b2f", kanji:"食",
     desc:"輸入食品や自家製スイーツで人気のスーパーの福袋。価格帯が3,000円台からあり、初めての福袋にも手を出しやすいラインアップ。",
@@ -422,7 +468,7 @@ var ITEMS = [
     note:"予約は11月1日から開始済み。上限数に達すると早期終了するため、気になるタイプは早めの予約がおすすめです。",
     url:"https://kobe-journal.com/archives/8698846356.html", urlLabel:"紹介記事（神戸ジャーナル）" },
   { id:"komeda", brand:"コメダ珈琲店", name:"2027年 コメダの福袋「寿」「慶」", price:null, priceLabel:"価格は店舗で確認", worth:null,
-    cat:"coffee", catLabel:"コーヒー・カフェ", area:"store", areaLabel:"全国の店舗", method:"店頭予約", status:"soon",
+    cat:"coffee", catLabel:"コーヒー・カフェ", area:"store", channel:"store", areaLabel:"全国の店舗", method:"店頭予約", status:"soon",
     start:"2026-11-11", deadline:"2027-01-06", deadlineLabel:"予約 11月11日〜順次／販売 1月1日〜6日",
     color:"#7a4a21", kanji:"喫",
     desc:"2WAYブランケット入りの「寿（ことぶき）」と、舟形バッグの「慶（よろこび）」の2種類。予約は11月11日から店舗ごとに順次スタートします。",
@@ -430,7 +476,7 @@ var ITEMS = [
     note:"予約開始日は店舗によって異なります（一部店舗は対象外）。販売は2027年1月1日〜6日の数量限定で、なくなり次第終了です。",
     url:"https://gourmet.watch.impress.co.jp/docs/news/fukubukuro/2153611.html", urlLabel:"詳細ニュース（グルメ Watch）" },
   { id:"cosmekitchen", brand:"コスメキッチン", name:"Cosme Kitchen 福袋 2027（全3種）", price:4620, priceLabel:"¥4,620〜8,250", worth:null,
-    cat:"beauty", catLabel:"コスメ・美容", area:"online", areaLabel:"全国オンライン・店舗", method:"先行予約", status:"soon",
+    cat:"beauty", catLabel:"コスメ・美容", area:"online", channel:"both", areaLabel:"全国オンライン・店舗", method:"先行予約", status:"soon",
     start:"2026-11-13", deadline:"2027-01-01", deadlineLabel:"先行予約 11月13日〜／発売 1月1日",
     color:"#17616b", kanji:"美",
     desc:"ナチュラル＆オーガニックの人気ブランドの名品詰め合わせ。目的で選べる3種——スキンケアの「輝」¥8,250、インナーケアの「潤」¥4,620、「整」¥4,740。",
@@ -438,7 +484,7 @@ var ITEMS = [
     note:"11月13日から公式ウェブストアで先行予約開始。店頭・ウェブストアでの発売は2027年1月1日です。",
     url:"https://news.yahoo.co.jp/articles/99a1100162d94deaa5cb4ff9a508000fa0ef3f77?page=1", urlLabel:"詳細ニュース（Yahoo!ニュース）" },
   { id:"nanacha", brand:"nana's green tea", name:"nana's green tea 福袋 2027", price:8900, priceLabel:"¥8,900", worth:"チケット最大¥11,680相当",
-    cat:"coffee", catLabel:"コーヒー・カフェ", area:"store", areaLabel:"全国の店舗", method:"予約", status:"active",
+    cat:"coffee", catLabel:"コーヒー・カフェ", area:"store", channel:"store", areaLabel:"全国の店舗", method:"予約", status:"active",
     start:"2026-11-04", deadline:"2026-11-30", deadlineLabel:"事前ネット予約 〜11月30日（月）23:59",
     color:"#3e6b34", kanji:"茶",
     desc:"抹茶ラテ缶やロールケーキポーチに、最大¥11,680相当分のチケットが付いた福袋。チケットだけでも価格以上の価値があるタイプです。",
@@ -446,7 +492,7 @@ var ITEMS = [
     note:"事前ネット予約は11月4日14:00〜11月30日23:59。普段から店舗を使う人ほどお得度が高い福袋です。",
     url:"https://kobe-journal.com/archives/8698846356.html", urlLabel:"紹介記事（神戸ジャーナル）" },
   { id:"doutor", brand:"ドトールコーヒー", name:"ドトール 福袋 2027（シナモロール コラボ）", price:2400, priceLabel:"¥2,400〜12,000", worth:null,
-    cat:"coffee", catLabel:"コーヒー・カフェ", area:"store", areaLabel:"全国の店舗", method:"店頭予約", status:"active",
+    cat:"coffee", catLabel:"コーヒー・カフェ", area:"store", channel:"store", areaLabel:"全国の店舗", method:"店頭予約", status:"active",
     start:"2026-11-01", deadline:"2026-12-25", deadlineLabel:"予約 〜12月25日／発売 12月26日〜",
     color:"#2b4a67", kanji:"豆",
     desc:"サンリオ「シナモロール」とのコラボ福袋。¥2,400から¥12,000まで価格帯が広く、ドリップコーヒーと限定グッズのセットが中心です。",
@@ -454,7 +500,7 @@ var ITEMS = [
     note:"発売は12月26日からで、店頭で事前予約を受付中。コラボグッズ目当てなら予約しておくのが安全です。",
     url:"https://kobe-journal.com/archives/8698846356.html", urlLabel:"紹介記事（神戸ジャーナル）" },
   { id:"zoff", brand:"Zoff", name:"Zoff 福袋 2027", price:6600, priceLabel:"¥6,600", worth:"メガネ券として使える",
-    cat:"fashion", catLabel:"ファッション・雑貨", area:"online", areaLabel:"全国オンライン", method:"先着", status:"active",
+    cat:"fashion", catLabel:"ファッション・雑貨", area:"online", channel:"online", areaLabel:"全国オンライン", method:"先着", status:"active",
     start:"2026-11-01", deadline:"2027-01-31", deadlineLabel:"オンライン先行販売中",
     color:"#374151", kanji:"眼",
     desc:"メガネブランドZoffの福袋はオンラインで先行販売中。購入額がそのままメガネ券として使える実用派で、買い替え予定がある人に。",
@@ -462,7 +508,7 @@ var ITEMS = [
     note:"オンライン先行販売が始まっています。在庫限りなので、度付きメガネの買い替えを考えている人は早めにどうぞ。",
     url:"https://kobe-journal.com/archives/8698846356.html", urlLabel:"紹介記事（神戸ジャーナル）" },
   { id:"kuzefuku", brand:"久世福商店", name:"久世福商店 福袋 2027", price:3000, priceLabel:"¥3,000〜15,000", worth:null,
-    cat:"food", catLabel:"食品・グルメ", area:"store", areaLabel:"全国の店舗・オンライン", method:"予約", status:"soon",
+    cat:"food", catLabel:"食品・グルメ", area:"store", channel:"both", areaLabel:"全国の店舗・オンライン", method:"予約", status:"soon",
     start:"2026-11-20", deadline:"2027-01-05", deadlineLabel:"販売・予約 11月20日〜",
     color:"#8a5a1e", kanji:"福",
     desc:"だしやごはんのお供で人気の食品セレクトの福袋。¥3,000の入門タイプから¥15,000の豪華タイプまで、贈り物にも使える幅広い構成。",
@@ -470,7 +516,7 @@ var ITEMS = [
     note:"販売・予約は11月20日から。自宅用にも手土産用にも使いやすい食品系です。",
     url:"https://kobe-journal.com/archives/8698846356.html", urlLabel:"紹介記事（神戸ジャーナル）" },
   { id:"feiler", brand:"フェイラー", name:"FEILER HAPPY PACK 2027", price:17600, priceLabel:"¥17,600〜23,100", worth:null,
-    cat:"fashion", catLabel:"ファッション・雑貨", area:"online", areaLabel:"全国オンライン限定", method:"予約", status:"soon",
+    cat:"fashion", catLabel:"ファッション・雑貨", area:"online", channel:"online", areaLabel:"全国オンライン限定", method:"予約", status:"soon",
     start:"2026-12-02", deadline:"2026-12-15", deadlineLabel:"予約 12月2日（水）12:00〜12月15日（火）16:59",
     color:"#6b3a54", kanji:"織",
     desc:"シュニール織のハンカチで知られるドイツブランド。ハンカチ＋バッグ＋ポーチの3点セットが2柄・価格で登場。今年は店頭販売なし、公式オンラインショップ限定です。",
@@ -478,23 +524,23 @@ var ITEMS = [
     note:"姉妹ブランド「ラブラリー バイ フェイラー」は12月8日12:00から別スケジュールで予約開始。発送は12月23日以降順次です。",
     url:"https://www.iza.ne.jp/article/20261102-W5KAW6YMDNHKBGQNNAZBZOFYFU/", urlLabel:"詳細ニュース（iza）" },
   { id:"deandeluca", brand:"DEAN & DELUCA", name:"DEAN & DELUCA 福袋 2027", price:8640, priceLabel:"¥8,640", worth:null,
-    cat:"food", catLabel:"食品・グルメ", area:"store", areaLabel:"全国の店舗", method:"店頭販売", status:"soon",
+    cat:"food", catLabel:"食品・グルメ", area:"store", channel:"store", areaLabel:"全国の店舗", method:"店頭販売", status:"soon",
     start:"2027-01-01", deadline:"2027-01-03", deadlineLabel:"初売りで店頭販売",
     color:"#44403c", kanji:"贈",
     desc:"人気デリ＆食品セレクトの福袋は¥8,640。例年、初売りの店頭販売が中心で、人気店では朝のうちに売り切れることもあります。",
     contents:["食品・ドリンクの詰め合わせ ¥8,640"],
     note:"購入予定の店舗の初売り開始時刻を事前に確認しておくのがおすすめです。",
     url:"https://kobe-journal.com/archives/8698846356.html", urlLabel:"紹介記事（神戸ジャーナル）" },
-  { id:"takashimaya", brand:"高島屋", name:"高島屋 福袋 2027（百貨店オンライン）", price:null, priceLabel:"ブランドごとに設定", worth:null,
-    cat:"dept", catLabel:"百貨店", area:"online", areaLabel:"全国オンライン", method:"先着・抽選", status:"active",
-    start:"2026-11-01", deadline:"2027-01-05", deadlineLabel:"特集ページで順次販売中",
+  { id:"takashimaya", brand:"高島屋", name:"高島屋 福袋 2027（オンライン＋店頭）", price:null, priceLabel:"ブランドごとに設定", worth:null,
+    cat:"dept", catLabel:"百貨店", area:"online", channel:"both", areaLabel:"全国オンライン・店舗", method:"先着・抽選", status:"active",
+    start:"2026-11-01", deadline:"2027-01-05", deadlineLabel:"オンラインで順次販売中／店頭でも抽選・販売あり",
     color:"#7c2d3e", kanji:"百",
-    desc:"にんべん、文明堂東京、WEDGWOOD、カステラ銀装など、百貨店ならではの食品・名品ブランドの福袋をまとめて買える特集。老舗の味を贈りたい人に。",
+    desc:"にんべん、文明堂東京、WEDGWOOD、カステラ銀装など、百貨店ならではの食品・名品ブランドの福袋をまとめて買える特集。オンラインストアでの販売に加え、店舗では店頭抽選・店頭販売を行うブランドもあり、オンラインでも店頭でも買えます。老舗の味を贈りたい人に。",
     contents:["にんべん、文明堂東京などの食品福袋","WEDGWOOD などの名品ブランド"],
-    note:"ブランドごとに販売方法（先着／抽選）と期間が異なります。特集ページの「ブランドから選ぶ」から確認できます。",
+    note:"ブランドごとに販売方法（オンラインの先着／抽選、店頭抽選・店頭販売）と期間が異なります。オンライン分は特集ページの「ブランドから選ぶ」から、店頭分は最寄り店舗の案内もあわせてご確認ください。",
     url:"https://www.takashimaya.co.jp/shopping/special/fukubukuro/", urlLabel:"高島屋 福袋2027特集" },
   { id:"gelatopique", brand:"ジェラート ピケ", name:"gelato pique 福袋 2027（A／B／HOMME）", price:null, priceLabel:"公式で確認", worth:null,
-    cat:"fashion", catLabel:"ファッション・雑貨", area:"online", areaLabel:"全国オンライン", method:"抽選", status:"ended",
+    cat:"fashion", catLabel:"ファッション・雑貨", area:"online", channel:"online", areaLabel:"全国オンライン", method:"抽選", status:"ended",
     start:"2026-11-02", deadline:"2026-11-05", deadlineLabel:"抽選受付は11月5日で終了",
     color:"#a2677e", kanji:"衣",
     desc:"ルームウェアの人気ブランド。レディースA／BとメンズHOMMEの3種類で抽選受付が行われましたが、11月5日で締め切りました。再販情報が出たら更新します。",
@@ -515,13 +561,25 @@ var WATCH = [
 ];
 
 var CATS = [ ["all","すべて"], ["coffee","コーヒー・カフェ"], ["food","食品・グルメ"], ["beauty","コスメ・美容"], ["fashion","ファッション・雑貨"], ["dept","百貨店"] ];
-var AREAS = [ ["all","すべて"], ["online","全国オンライン"], ["store","全国の店舗"], ["kansai","関西・地域限定"] ];
+var AREAS = [ ["all","すべて"], ["kansai","関西・地域限定"] ];
+var CHANNELS = [ ["all","すべて"], ["online","オンラインのみ"], ["store","実店舗のみ"], ["both","両方OK"] ];
+function channelOf(it){ return it.channel || (it.area==="online" ? "online" : (it.area==="store" ? "store" : "both")); }
+function channelLabel(ch){ return ch==="online" ? "オンラインのみ" : (ch==="store" ? "実店舗のみ" : "両方OK"); }
+function channelShort(ch){ return ch==="online" ? "オンライン" : (ch==="store" ? "実店舗" : "両方OK"); }
+function channelCount(ch){ if(ch==="all") return ITEMS.length; return ITEMS.filter(function(it){ return channelOf(it)===ch; }).length; }
+function channelSub(it){ var ch = channelOf(it); if(ch==="online") return "店頭販売なし ・ ネットで完結"; if(ch==="store") return "オンライン販売なし ・ お店で購入"; return "ネットでも お店でも買える"; }
+function iconOnline(){ return '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.7 3.8 9S14.5 18.4 12 21c-2.5-2.6-3.8-5.7-3.8-9S9.5 5.6 12 3Z"/></svg>'; }
+function iconStore(){ return '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 10v10h16V10M3 6l1.5-3h15L21 6c0 1.7-1.3 3-3 3-1 0-1.9-.5-2.4-1.2C15.1 8.5 14.1 9 13 9s-2.1-.5-2.6-1.2C9.9 8.5 9 9 8 9 6.3 9 5 7.7 5 6H3Z"/><path d="M9 20v-5h6v5"/></svg>'; }
+function iconBoth(){ return '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="9" cy="9" r="5"/><path d="M14 14l7 7M15 5h6v6"/></svg>'; }
+function channelIcon(ch){ return ch==="online" ? iconOnline() : (ch==="store" ? iconStore() : iconBoth()); }
+function channelBadge(it){ var ch = channelOf(it); return '<span class="badge channel-badge '+ch+'">'+channelLabel(ch)+'</span>'; }
+function channelStrip(it){ var ch = channelOf(it); return '<div class="channel-strip '+ch+'">'+channelIcon(ch)+'<span>'+channelLabel(ch)+'</span><small>'+channelSub(it)+'</small></div>'; }
 
 var AREA_CARDS = [
-  { key:"online", title:"全国オンライン", desc:"抽選・先着はスマホで完結。自宅に届くので、並ばずに買いたい人向け。", },
-  { key:"store", title:"全国の店舗", desc:"コメダやドトールなど、近所のお店で予約・購入できるタイプ。", },
-  { key:"kansai", title:"関西・京都", desc:"よーじやなど、京都・関西発ブランドと地域の百貨店を中心に。", },
-  { key:"all", title:"すべて表示", desc:"地域を絞らず、締切が近い順に全部の福袋を見比べる。", }
+  { key:"online", title:"オンラインのみ", desc:"スタバ・フェイラーなど、店頭販売はなくネットだけで買えるタイプ。青い帯が目印。", },
+  { key:"store", title:"実店舗のみ", desc:"コメダ・ドトールなど、オンライン販売はなくお店で予約・購入するタイプ。オレンジの帯が目印。", },
+  { key:"both", title:"両方OK", desc:"成城石井・コスメキッチン・高島屋など、オンラインでも実店舗でも買えるタイプ。緑の帯が目印。", },
+  { key:"kansai", title:"関西・京都（地域）", desc:"よーじやなど、京都・関西発ブランドと地域のものを地域で絞って見る。", }
 ];
 
 // cdKind: deadline=申込締切 / start=受付開始 / sale=発売日 / none=日付未定（カウントダウンなし）
@@ -590,7 +648,7 @@ function prefCount(key){
   return ITEMS.filter(function(it){ return itemPrefectures(it).indexOf(key) >= 0; }).length;
 }
 
-var state = { q:"", cat:"all", area:"all", region:"all", pref:"all", sort:"deadline", favOnly:false };
+var state = { q:"", cat:"all", area:"all", channel:"all", region:"all", pref:"all", sort:"deadline", favOnly:false };
 var favs = {}; // このタブ内だけのお気に入り
 
 function dparse(s){ var p=s.split("-"); return new Date(+p[0], +p[1]-1, +p[2]); }
@@ -608,6 +666,7 @@ function iconPin(){ return '<svg width="15" height="15" viewBox="0 0 24 24" fill
 function filtered(){
   var list = ITEMS.filter(function(it){
     if(state.cat!=="all" && it.cat!==state.cat) return false;
+    if(state.channel!=="all" && channelOf(it)!==state.channel) return false;
     if(state.pref!=="all" && itemPrefectures(it).indexOf(state.pref)<0) return false;
     if(state.region!=="all" && itemRegions(it).indexOf(state.region)<0) return false;
     if(state.area!=="all"){
@@ -617,7 +676,7 @@ function filtered(){
     }
     if(state.favOnly && !favs[it.id]) return false;
     if(state.q){
-      var hay = (it.brand+" "+it.name+" "+it.desc+" "+it.catLabel+" "+it.areaLabel).toLowerCase();
+      var hay = (it.brand+" "+it.name+" "+it.desc+" "+it.catLabel+" "+it.areaLabel+" "+channelLabel(channelOf(it))+" "+channelShort(channelOf(it))).toLowerCase();
       if(hay.indexOf(state.q.toLowerCase())<0) return false;
     }
     return true;
@@ -636,7 +695,7 @@ function filtered(){
 function render(){
   var list = filtered();
   var grid = document.getElementById("grid");
-  document.getElementById("countNote").textContent = list.length + " 件を表示中（全 " + ITEMS.length + " 件）" + (state.pref!=="all" ? " ・ 都道府県：" + prefLabel(state.pref) : (state.region!=="all" ? " ・ 地域：" + regionLabel(state.region) : ""));
+  document.getElementById("countNote").textContent = list.length + " 件を表示中（全 " + ITEMS.length + " 件）" + (state.channel!=="all" ? " ・ 買い方：" + channelLabel(state.channel) : "") + (state.pref!=="all" ? " ・ 都道府県：" + prefLabel(state.pref) : (state.region!=="all" ? " ・ 地域：" + regionLabel(state.region) : ""));
   document.getElementById("empty").style.display = list.length ? "none" : "block";
   grid.innerHTML = list.map(function(it){
     var cdi = cdOf(it), dl = cdDays(it);
@@ -649,7 +708,9 @@ function render(){
     else if(dl<0){ cd = '<div class="countdown done"><span>'+(cdi.kind==="deadline" ? "受付は締め切りました" : "受付は始まっています")+'</span></div>'; }
     else if(dl===0){ cd = '<div class="countdown"><span class="num">今日</span>'+(cdi.kind==="deadline" ? "が締切日です" : (cdi.kind==="sale" ? "発売日です" : "から開始です"))+'</div>'; }
     else { cd = '<div class="countdown"><span>'+cdWord(it)+'</span><span class="num">あと'+dl+'日</span></div>'; }
-    return '<article class="card">'
+    var ch = channelOf(it);
+    return '<article class="card channel-'+ch+'">'
+      + channelStrip(it)
       + '<div class="card-banner" style="background:linear-gradient(135deg,'+it.color+','+it.color+'cc)">'
       +   '<span class="banner-pattern">'+it.kanji+'</span>'
       +   '<div class="banner-brand">'+it.brand+'</div>'
@@ -657,12 +718,13 @@ function render(){
       +   '<button class="fav-btn" data-fav="'+it.id+'" aria-pressed="'+(favs[it.id]?"true":"false")+'" aria-label="'+it.brand+'をお気に入りに追加">★</button>'
       + '</div>'
       + '<div class="card-body">'
-      +   '<div class="badges">'+statusBadge(it)+'<span class="badge method">'+it.method+'</span><span class="badge">'+it.areaLabel+'</span></div>'
+      +   '<div class="badges">'+channelBadge(it)+statusBadge(it)+'<span class="badge method">'+it.method+'</span><span class="badge">'+it.areaLabel+'</span></div>'
       +   '<h3>'+it.name+'</h3>'
       +   '<div class="price-row"><span class="price">'+it.priceLabel+'</span>'+(it.worth?'<span class="worth">'+it.worth+'</span>':'')+'</div>'
       +   '<p class="desc">'+it.desc+'</p>'
       +   '<div class="meta">'
       +     '<div>'+iconCal()+'<span><b>締切・日程</b>　'+it.deadlineLabel+'</span></div>'
+      +     '<div>'+channelIcon(ch)+'<span><b>販売チャネル</b>　'+channelLabel(ch)+' — '+channelSub(it)+'</span></div>'
       +     '<div>'+iconPin()+'<span><b>買い方</b>　'+it.method+'（'+it.areaLabel+'）</span></div>'
       +   '</div>'
       +   cd
@@ -688,10 +750,18 @@ function renderStrip(){
 }
 
 function renderChips(){
+  var chEl = document.getElementById("channelChips");
+  if(chEl){
+    chEl.innerHTML = '<span class="lab">買い方</span>' + CHANNELS.map(function(c){
+      var dot = c[0]==="all" ? "" : '<span class="dotc" aria-hidden="true"></span>';
+      var cnt = '<span class="cnt">'+channelCount(c[0])+'件</span>';
+      return '<button class="chip channel" data-channel="'+c[0]+'" aria-pressed="'+(state.channel===c[0])+'">'+dot+c[1]+cnt+'</button>';
+    }).join("");
+  }
   document.getElementById("catChips").innerHTML = '<span class="lab">カテゴリ</span>' + CATS.map(function(c){
     return '<button class="chip" data-cat="'+c[0]+'" aria-pressed="'+(state.cat===c[0])+'">'+c[1]+'</button>';
   }).join("");
-  document.getElementById("areaChips").innerHTML = '<span class="lab">地域・買い方</span>' + AREAS.map(function(a){
+  document.getElementById("areaChips").innerHTML = '<span class="lab">地域</span>' + AREAS.map(function(a){
     return '<button class="chip area" data-area="'+a[0]+'" aria-pressed="'+(state.area===a[0])+'">'+a[1]+'</button>';
   }).join("");
 }
@@ -733,7 +803,7 @@ function renderMap(){
       var pextra = prefObj(state.pref).region==="kansai" ? "関西の県なので、京都発「よーじや」を含む掲載中の全13件が対象です。" : "全国オンライン・全国店舗の12件が対象です。関西限定の「よーじや」は含まれません。";
       panel.innerHTML = '<div class="kicker">選択中の都道府県</div><h3>'+prefLabel(state.pref)+' — <b>'+pn+'件</b></h3><p>'+regionLabel(prefObj(state.pref).region)+'地方の県です。'+pextra+'</p><div class="map-panel-actions"><button class="primary" data-map-action="list">この県の一覧を見る ↓</button><button data-map-action="region">地方全体に戻す</button><button data-map-action="all">全国に戻す</button></div>';
     } else if(state.region==="all"){
-      panel.innerHTML = '<div class="kicker">選択中の地域</div><h3>全国 — <b>13件</b></h3><p>地図の地域タイルをタップすると、その地域で買える福袋だけに一覧が切り替わります。地方を選ぶと都道府県タイルも出てきて、県単位まで絞れます。全国オンライン（6件）と全国の店舗（6件）は全地域共通で、関西には京都の「よーじや」が加わります。</p><div class="map-panel-actions"><button class="primary" data-map-action="kansai">関西（13件）を見る</button><button data-map-action="online">オンラインのみ</button></div>';
+      panel.innerHTML = '<div class="kicker">選択中の地域</div><h3>全国 — <b>13件</b></h3><p>地図の地域タイルをタップすると、その地域で買える福袋だけに一覧が切り替わります。地方を選ぶと都道府県タイルも出てきて、県単位まで絞れます。買い方はカード上部の色帯で区別できます（青＝オンラインのみ ' + channelCount("online") + '件／オレンジ＝実店舗のみ ' + channelCount("store") + '件／緑＝両方OK ' + channelCount("both") + '件）で、関西には京都の「よーじや」が加わります。</p><div class="map-panel-actions"><button class="primary" data-map-action="kansai">関西（13件）を見る</button><button data-map-action="online">オンラインのみ</button></div>';
     } else {
       var rn = regionCount(state.region);
       var extra = state.region==="kansai" ? "京都発「よーじや」を含む、掲載中の全13件が対象です。" : "全国オンライン・全国店舗の12件が対象です。関西限定の「よーじや」は含まれません。";
@@ -751,13 +821,17 @@ function renderMap(){
     sel.value = state.pref;
   }
   var qo = document.getElementById("quickOnlineCount");
-  if(qo){ qo.textContent = ITEMS.filter(function(it){return it.area==="online";}).length + " 件の福袋 →"; }
+  if(qo){ qo.textContent = channelCount("online") + " 件の福袋 →"; }
 }
 
 function renderAreas(){
   document.getElementById("areas").innerHTML = AREA_CARDS.map(function(a){
-    var n = a.key==="all" ? ITEMS.length : ITEMS.filter(function(it){return it.area===a.key;}).length;
-    return '<button class="area-card" data-area-card="'+a.key+'"><b>'+a.title+'</b><span>'+a.desc+'</span><span class="n">'+n+' 件の福袋 →</span></button>';
+    var n;
+    if(a.key==="all") n = ITEMS.length;
+    else if(a.key==="online"||a.key==="store"||a.key==="both") n = channelCount(a.key);
+    else n = ITEMS.filter(function(it){return it.area===a.key;}).length;
+    var dotStyle = a.key==="online" ? ' style="border-top:4px solid var(--ch-online)"' : (a.key==="store" ? ' style="border-top:4px solid var(--ch-store)"' : (a.key==="both" ? ' style="border-top:4px solid var(--ch-both)"' : ''));
+    return '<button class="area-card" data-area-card="'+a.key+'"'+dotStyle+'><b>'+a.title+'</b><span>'+a.desc+'</span><span class="n">'+n+' 件の福袋 →</span></button>';
   }).join("");
 }
 
@@ -779,15 +853,17 @@ function openModal(id){
   if(!it) return;
   var dl = daysLeft(it);
   document.getElementById("modal").innerHTML =
-    '<div class="modal-banner" style="background:linear-gradient(135deg,'+it.color+','+it.color+'cc)">'
+    channelStrip(it)
+    + '<div class="modal-banner" style="background:linear-gradient(135deg,'+it.color+','+it.color+'cc)">'
     + '<div class="banner-brand" style="font-size:24px">'+it.brand+'</div>'
     + '<div class="banner-cat">'+it.catLabel+' ／ '+it.areaLabel+'</div>'
     + '<button class="modal-close" id="modalClose" aria-label="閉じる">✕</button></div>'
     + '<div class="modal-body"><h3>'+it.name+'</h3>'
-    + '<div class="badges">'+statusBadge(it)+'<span class="badge method">'+it.method+'</span>'+(cdOf(it)&&it.status!=="ended"&&cdDays(it)>=0?'<span class="badge">'+cdWord(it)+' あと'+cdDays(it)+'日</span>':'')+'</div>'
+    + '<div class="badges">'+channelBadge(it)+statusBadge(it)+'<span class="badge method">'+it.method+'</span>'+(cdOf(it)&&it.status!=="ended"&&cdDays(it)>=0?'<span class="badge">'+cdWord(it)+' あと'+cdDays(it)+'日</span>':'')+'</div>'
     + '<dl class="kv">'
     + '<dt>価格</dt><dd><b>'+it.priceLabel+'</b>'+(it.worth?'（'+it.worth+'）':'')+'</dd>'
     + '<dt>日程</dt><dd>'+it.deadlineLabel+'</dd>'
+    + '<dt>販売チャネル</dt><dd><b>'+channelLabel(channelOf(it))+'</b> — '+channelSub(it)+'</dd>'
     + '<dt>買い方</dt><dd>'+it.method+'（'+it.areaLabel+'）</dd>'
     + '</dl>'
     + '<h4>中身の内容</h4><ul>'+it.contents.map(function(c){return '<li>'+c+'</li>';}).join("")+'</ul>'
@@ -809,17 +885,21 @@ document.addEventListener("click", function(e){
   var prefBtn = e.target.closest("[data-pref]");
   if(prefBtn){ var pk = prefBtn.getAttribute("data-pref"); state.pref = (state.pref===pk ? "all" : pk); if(state.pref!=="all"){ state.region = prefObj(state.pref).region; } renderMap(); render(); return; }
   var mQuick = e.target.closest("[data-map-quick]");
-  if(mQuick){ var qk = mQuick.getAttribute("data-map-quick"); if(qk==="online"){ state.region="all"; state.pref="all"; state.area="online"; } else { state.region="all"; state.pref="all"; state.area="all"; } renderChips(); renderMap(); render(); document.getElementById("list").scrollIntoView({behavior:"smooth"}); return; }
+  if(mQuick){ var qk = mQuick.getAttribute("data-map-quick"); if(qk==="online"){ state.region="all"; state.pref="all"; state.area="all"; state.channel="online"; } else { state.region="all"; state.pref="all"; state.area="all"; state.channel="all"; } renderChips(); renderMap(); render(); document.getElementById("list").scrollIntoView({behavior:"smooth"}); return; }
   var mAct = e.target.closest("[data-map-action]");
-  if(mAct){ var ak = mAct.getAttribute("data-map-action"); if(ak==="kansai"){ state.region="kansai"; state.pref="all"; renderMap(); render(); document.getElementById("list").scrollIntoView({behavior:"smooth"}); } else if(ak==="online"){ state.region="all"; state.pref="all"; state.area="online"; renderChips(); renderMap(); render(); document.getElementById("list").scrollIntoView({behavior:"smooth"}); } else if(ak==="all"){ state.region="all"; state.pref="all"; renderMap(); render(); } else if(ak==="region"){ state.pref="all"; renderMap(); render(); } else if(ak==="list"){ document.getElementById("list").scrollIntoView({behavior:"smooth"}); } return; }
+  if(mAct){ var ak = mAct.getAttribute("data-map-action"); if(ak==="kansai"){ state.region="kansai"; state.pref="all"; renderMap(); render(); document.getElementById("list").scrollIntoView({behavior:"smooth"}); } else if(ak==="online"){ state.region="all"; state.pref="all"; state.area="all"; state.channel="online"; renderChips(); renderMap(); render(); document.getElementById("list").scrollIntoView({behavior:"smooth"}); } else if(ak==="all"){ state.region="all"; state.pref="all"; renderMap(); render(); } else if(ak==="region"){ state.pref="all"; renderMap(); render(); } else if(ak==="list"){ document.getElementById("list").scrollIntoView({behavior:"smooth"}); } return; }
   var det = e.target.closest("[data-detail]");
   if(det){ openModal(det.getAttribute("data-detail")); return; }
+  var chchip = e.target.closest("[data-channel]");
+  if(chchip){ state.channel = chchip.getAttribute("data-channel"); renderChips(); render(); return; }
   var chip = e.target.closest("[data-cat]");
   if(chip){ state.cat = chip.getAttribute("data-cat"); renderChips(); render(); return; }
   var achip = e.target.closest("[data-area]");
   if(achip){ state.area = achip.getAttribute("data-area"); renderChips(); render(); return; }
+  var chcard = e.target.closest("[data-channel-card]");
+  if(chcard){ state.channel = chcard.getAttribute("data-channel-card"); state.area="all"; renderChips(); render(); document.getElementById("list").scrollIntoView({behavior:"smooth"}); return; }
   var acard = e.target.closest("[data-area-card]");
-  if(acard){ state.area = acard.getAttribute("data-area-card"); renderChips(); render(); document.getElementById("list").scrollIntoView({behavior:"smooth"}); return; }
+  if(acard){ var ak2 = acard.getAttribute("data-area-card"); if(ak2==="online"||ak2==="store"||ak2==="both"){ state.channel = ak2; state.area="all"; } else if(ak2==="all"){ state.channel="all"; state.area="all"; } else { state.area = ak2; state.channel="all"; } renderChips(); render(); document.getElementById("list").scrollIntoView({behavior:"smooth"}); return; }
 });
 document.getElementById("modalBack").addEventListener("click", function(e){ if(e.target===this) closeModal(); });
 document.addEventListener("keydown", function(e){ if(e.key==="Escape") closeModal(); });
