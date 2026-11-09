@@ -302,7 +302,7 @@ footer a{color:var(--red);text-decoration:none;font-weight:700}
   <div class="wrap hero-grid">
     <div class="hero-copy">
       <div class="update-line">
-        <span class="pill live"><span class="dot"></span>2026年11月8日（日）更新</span>
+        <span class="pill live"><span class="dot"></span>2026年11月9日（月）更新</span>
         <span class="pill">2027年 新春福袋シーズン</span>
       </div>
       <h1>福袋ナビ <span class="yr">2027</span><br>迷ったら、締切の近い順。</h1>
@@ -421,7 +421,7 @@ footer a{color:var(--red);text-decoration:none;font-weight:700}
 
 <footer>
   <div class="wrap">
-    <p><b>掲載について</b>　価格はすべて税込です。「相当」と表記した金額は各ブランド発表のお得度の目安で、実際の内訳とは異なる場合があります。受付期間・価格は変更・売り切れになることがあるため、申込前に必ず公式ページで最新情報をご確認ください。最終更新：2026年11月8日</p>
+    <p><b>掲載について</b>　価格はすべて税込です。「相当」と表記した金額は各ブランド発表のお得度の目安で、実際の内訳とは異なる場合があります。受付期間・価格は変更・売り切れになることがあるため、申込前に必ず公式ページで最新情報をご確認ください。最終更新：2026年11月9日</p>
     <p style="margin-bottom:6px"><b>情報ソース</b></p>
     <div class="src-list">
       <a href="https://www.oricon.co.jp/news/2489720/full/" target="_blank" rel="noopener">ORICON NEWS（スターバックス福袋2027）</a>
@@ -440,7 +440,7 @@ footer a{color:var(--red);text-decoration:none;font-weight:700}
 </div>
 
 <script>
-var TODAY = new Date(2026, 10, 8); // 2026-11-08 時点の情報で表示
+var TODAY = new Date(2026, 10, 9); // 2026-11-09 時点の情報で表示
 
 var ITEMS = [
   { id:"starbucks", brand:"スターバックス", name:"スターバックス福袋 2027", price:9500, priceLabel:"¥9,500", worth:"ドリンクチケット7枚入り",
@@ -537,16 +537,80 @@ var ITEMS = [
     color:"#7c2d3e", kanji:"百",
     desc:"にんべん、文明堂東京、WEDGWOOD、カステラ銀装など、百貨店ならではの食品・名品ブランドの福袋をまとめて買える特集。オンラインストアでの販売に加え、店舗では店頭抽選・店頭販売を行うブランドもあり、オンラインでも店頭でも買えます。老舗の味を贈りたい人に。",
     contents:["にんべん、文明堂東京などの食品福袋","WEDGWOOD などの名品ブランド"],
-    note:"ブランドごとに販売方法（オンラインの先着／抽選、店頭抽選・店頭販売）と期間が異なります。オンライン分は特集ページの「ブランドから選ぶ」から、店頭分は最寄り店舗の案内もあわせてご確認ください。",
+    note:"ブランドごとに販売方法（オンラインの先着／抽選、店頭抽選・店頭販売）と期間が異なります。オンライン分は特集ページの「ブランドから選ぶ」から、店頭分は最寄り店舗の案内もあわせてご確認ください。11月11日（水）10時からは「年末年始をごちそうで彩る、厳選グルメ」ウェーブ（日本橋 千疋屋総本店ほか）を予定。11月4日にはナルミヤブランドの福袋も新登場しました。",
     url:"https://www.takashimaya.co.jp/shopping/special/fukubukuro/", urlLabel:"高島屋 福袋2027特集" },
-  { id:"gelatopique", brand:"ジェラート ピケ", name:"gelato pique 福袋 2027（A／B／HOMME）", price:null, priceLabel:"公式で確認", worth:null,
+  { id:"kfc", brand:"ケンタッキー", name:"ケンタ福袋", price:3900, priceLabel:"¥3,900", worth:"引換券 ¥5,280 相当",
+    cat:"food", catLabel:"食品・グルメ", area:"store", channel:"store", areaLabel:"全国の店舗", method:"抽選", status:"soon",
+    start:"2026-11-13", deadline:"2026-11-26", deadlineLabel:"抽選受付 11月13日〜11月26日",
+    color:"#b3202c", kanji:"鶏",
+    desc:"バーレル型ココットと引換券（総額¥5,280相当）、クーポンつきケンタおみくじのセット。抽選はKFCモバイルオーダー会員限定で、受取は店頭のみ（デリバリー対象外）。2027年1月1日からは店頭で数量限定販売もあります。",
+    contents:["バーレル型ココット","引換券 総額¥5,280相当（チキン・バーガー・ポテトほか）","クーポンつきケンタおみくじ","手提げ紙袋"],
+    note:"抽選受付は11月13日〜11月26日。当選通知は12月7日以降、事前購入は12月7日〜12月16日、受取は2027年1月1日〜1月7日。KFCモバイルオーダーへの会員登録が必要です。引換券とおみくじの有効期限は2027年3月31日まで。",
+    url:"https://japan.kfc.co.jp/news_release/8190", urlLabel:"公式プレスリリース（日本KFC）" },
+  { id:"godiva", brand:"ゴディバ", name:"2027 ニューイヤー ハッピーバッグ", price:5400, priceLabel:"¥5,400", worth:null,
+    cat:"food", catLabel:"食品・グルメ", area:"online", channel:"online", areaLabel:"全国オンライン", method:"先着予約", status:"active",
+    start:"2026-11-02", deadline:"2026-12-25", deadlineLabel:"承り 〜12月25日（金）10:00",
+    color:"#6b4423", kanji:"甘",
+    desc:"アソートメント12粒、カレ9枚、Gキューブ6粒、ラングドシャ8枚にオリジナルバッグ付き。お年賀にも使えるチョコレートの詰め合わせで、大丸松坂屋オンラインストアで販売中。",
+    contents:["アソートメント 12粒","カレ 9枚","G キューブ 6粒","ラングドシャ 8枚","ゴディバオリジナルバッグ"],
+    note:"送料 ¥495。お届けは2027年1月4日〜1月6日の指定日時。大丸松坂屋オンラインストアでの販売です。",
+    url:"https://www.daimaru-matsuzakaya.jp/Item?prod=80031713&sku=80031713&cate=special_fukubukuro", urlLabel:"大丸松坂屋オンラインストア（公式）" },
+  { id:"mikihouse", brand:"ミキハウス", name:"ミキハウス 福袋 2027", price:27500, priceLabel:"¥27,500〜220,000", worth:null,
+    cat:"fashion", catLabel:"ファッション・雑貨", area:"store", channel:"both", areaLabel:"全国の店舗・オンライン", method:"先着予約", status:"active",
+    start:"2026-11-02", deadline:"2026-11-11", deadlineLabel:"12月3日お届け分は11月11日（水）23:59まで",
+    color:"#9c2b2e", kanji:"子",
+    desc:"ミキハウスとホットビスケッツの福袋。¥27,500（ホットビスケッツ）から¥220,000まで4タイプ。限定受注生産で、申込後のサイズ変更・キャンセルはできません。",
+    contents:["¥220,000 — 3シーズン用ウエア 11点以上＋キャリーオンバッグ","¥110,000 — ウエア 9点以上＋キャリーオンバッグ","¥33,000 — ウエア 5点以上＋トートバッグ","¥27,500（ホットビスケッツ） — ウエア 4点＋トートバッグ"],
+    note:"11月11日23:59までの申込分は12月3日〜順次お届け、11月12日以降の申込分は12月16日〜順次お届け。店舗・公式オンラインの両方で受付中。",
+    url:"https://www.mikihouse.co.jp/pages/pickup-fukubukuro-limited-index", urlLabel:"ミキハウス公式サイト" },
+  { id:"narumiya", brand:"ナルミヤ・インターナショナル", name:"ナルミヤ 福袋 2027", price:7700, priceLabel:"¥7,700〜17,600", worth:null,
+    cat:"fashion", catLabel:"ファッション・雑貨", area:"online", channel:"online", areaLabel:"全国オンライン", method:"先着", status:"active",
+    start:"2026-11-04", deadline:"2026-12-25", deadlineLabel:"販売中（承り期間は商品により異なります）",
+    color:"#8a5a9e", kanji:"服",
+    desc:"メゾピアノ、クレードスコープ、アナスイミニなど、ナルミヤのキッズブランド福袋。高島屋オンラインストアで全20点が販売中で、5点セット中心の構成です。",
+    contents:["メゾピアノ A ¥17,600／B ¥16,500 — 5点セット","アナスイミニ A ¥16,500／B ¥7,700","クレードスコープ BOYS 6点 ¥11,000／5点 ¥8,800","センスオブワンダー ¥13,200、KP ¥11,000 など全20点"],
+    note:"高島屋オンラインストアでの販売です（11月4日10:00〜）。NARUMIYA ONLINE や楽天など他の公式通路でも販売されています。2027年版の店頭販売は未確認です。",
+    url:"https://www.takashimaya.co.jp/shopping/special/fukubukuro/0900003763/0900005019/", urlLabel:"高島屋オンラインストア（公式）" },
+  { id:"adidas", brand:"アディダス", name:"アディダス 福袋 2027", price:11000, priceLabel:"¥11,000〜13,200", worth:null,
+    cat:"fashion", catLabel:"ファッション・雑貨", area:"online", channel:"online", areaLabel:"全国オンライン", method:"先着予約", status:"active",
+    start:"2026-11-04", deadline:"2027-01-31", deadlineLabel:"販売中（数量限定・なくなり次第終了）",
+    color:"#1f2937", kanji:"運",
+    desc:"中綿ジャケットやスウェット類など7点入りのスポーツ福袋。メンズ・レディース ¥13,200、キッズ ¥11,000。スーパースポーツゼビオの楽天市場店で販売中で、お届けは2027年1月1日以降。",
+    contents:["メンズ 7点 ¥13,200 — 中綿ジャケット、スウェットほか","レディース 7点 ¥13,200 — ボアジャケット、スウェットほか","キッズ 7点 ¥11,000 — 中綿ジャケット、スウェットほか"],
+    note:"クレジットカード決済のみ。数量限定で、なくなり次第終了です。アディダス公式オンラインストアでは近年、福袋の販売はありません。",
+    url:"https://www.rakuten.co.jp/supersportsxebio/contents/fukubukuro2027/", urlLabel:"スーパースポーツゼビオ 楽天市場店（公式）" },
+  { id:"mistore", brand:"三越伊勢丹", name:"三越伊勢丹 新春福袋 2027", price:null, priceLabel:"ブランドごとに設定", worth:null,
+    cat:"dept", catLabel:"百貨店", area:"online", channel:"online", areaLabel:"全国オンライン", method:"先着予約", status:"active",
+    start:"2026-10-21", deadline:"2027-01-20", deadlineLabel:"オンラインで順次販売中／次回 11月19日（木）10時〜 コスメ",
+    color:"#22406b", kanji:"越",
+    desc:"三越伊勢丹オンラインストアの福袋特集。ブランドごとにウェーブ販売され、10月21日・10月26日に続いて、次回は11月19日（木）10:00からコスメ福袋が登場します。12月以降のブランドは11月下旬に公開予定。",
+    contents:["ブランドごとに販売（食品・コスメ・ファッションほか）","次回ウェーブ：11月19日（木）10:00〜 コスメ","お届け：年内届 12月18日〜31日／年明け届 2027年1月5日〜9日／1月中旬届 1月14日〜20日"],
+    note:"販売ブランドはウェーブごとに公開されます。12月以降の販売ブランドは11月下旬に公開予定です。",
+    url:"https://www.mistore.jp/shopping/feature/shops_f3/fukubukuro_list_sp", urlLabel:"三越伊勢丹オンラインストア（公式）" },
+  { id:"daimaru", brand:"大丸松坂屋", name:"大丸松坂屋 福袋 2027", price:null, priceLabel:"ブランドごとに設定", worth:null,
+    cat:"dept", catLabel:"百貨店", area:"online", channel:"online", areaLabel:"全国オンライン", method:"先着予約", status:"active",
+    start:"2026-10-07", deadline:"2026-12-25", deadlineLabel:"承り 〜12月25日（金）10:00／次回 11月10日（火）10時〜 レディース・メンズ",
+    color:"#8c2f39", kanji:"大",
+    desc:"大丸松坂屋オンラインストアの福袋特集。410点以上を掲載し、10月7日のベビー＆キッズから始まってウェーブ販売中。食品・お菓子やミキハウス、メゾピアノなども販売中で、次回は11月10日（火）10:00からレディース・メンズ福袋が登場します。",
+    contents:["掲載 410点以上（食品・ベビー＆キッズ・ホームほか）","ゴディバ、ミキハウス、メゾピアノなども販売中","次回ウェーブ：11月10日（火）10:00〜 レディース・メンズ"],
+    note:"承り期間は2026年12月25日（金）10:00まで（一部商品は異なります）。注文後のキャンセル・返品・交換はできません。支払いはクレジットカード、PayPay、楽天ペイ、d払い、auかんたん決済。",
+    url:"https://www.daimaru-matsuzakaya.jp/special/fukubukuro", urlLabel:"大丸松坂屋オンラインストア（公式）" },
+  { id:"iyec", brand:"イトーヨーカドー", name:"イトーヨーカドー 福袋 2027", price:null, priceLabel:"12月2日公開予定", worth:null,
+    cat:"dept", catLabel:"百貨店", area:"online", channel:"online", areaLabel:"全国オンライン", method:"予約", status:"soon",
+    start:"2026-12-02", deadline:"2026-12-02", deadlineLabel:"予約開始 12月2日（水）12:00〜",
+    color:"#d7000f", kanji:"日",
+    desc:"イトーヨーカドーネット通販の福袋特集。現在は準備中で、12月2日（水）12:00から予約受付開始予定。フード（東京月堂、ローゼンハイム、ありあけ、リンツほか）とファッション（ギャローリア、ケントほか）のラインアップが予告されています。",
+    contents:["フード：東京月堂、ローゼンハイム、ありあけ、リンツほか","ファッション：ギャローリア、ケントほか","日用品・住まいの品：準備中"],
+    note:"公式ページは現在「只今準備中」で、個別価格・内容は12月2日に公開予定です。",
+    url:"https://iyec.itoyokado.co.jp/shop/r/rW5/", urlLabel:"イトーヨーカドーネット通販（公式）" },
+  { id:"gelatopique", brand:"ジェラート ピケ", name:"gelato pique 福袋 2027（A／B／HOMME）", price:13200, priceLabel:"¥13,200〜15,400", worth:null,
     cat:"fashion", catLabel:"ファッション・雑貨", area:"online", channel:"online", areaLabel:"全国オンライン", method:"抽選", status:"ended",
     start:"2026-11-02", deadline:"2026-11-05", deadlineLabel:"抽選受付は11月5日で終了",
     color:"#a2677e", kanji:"衣",
-    desc:"ルームウェアの人気ブランド。レディースA／BとメンズHOMMEの3種類で抽選受付が行われましたが、11月5日で締め切りました。再販情報が出たら更新します。",
-    contents:["レディース A／B の2タイプ","メンズ HOMME"],
-    note:"今年の抽選は終了済みです。落選者向けの一般販売やキャンセル分販売が行われる年もあるため、公式の続報待ちです。",
-    url:"https://kobe-journal.com/archives/8698846356.html", urlLabel:"紹介記事（神戸ジャーナル）" }
+    desc:"ルームウェアの人気ブランド。レディースA ¥13,200／B ¥15,400とメンズHOMME ¥15,400の3種類で、各5点入り。抽選受付は11月2日〜11月5日で終了しました。再販情報が出たら更新します。",
+    contents:["レディース A ¥13,200 — 人気アイテム 5点","レディース B ¥15,400 — 人気アイテム 5点","メンズ HOMME ¥15,400 — 人気アイテム 5点"],
+    note:"抽選は11月5日で終了。当落は11月18日（水）18:00以降にメールで通知されます。USAGI ONLINE では3種とも SOLD OUT。再販の続報はなし。",
+    url:"https://prtimes.jp/main/html/rd/p/000004576.000018505.html", urlLabel:"公式プレスリリース（PR TIMES）" }
 ];
 
 var WATCH = [
@@ -592,7 +656,13 @@ var CD = {
   cosmekitchen:{date:"2026-11-13", kind:"start"},
   komeda:{date:"2026-11-11", kind:"start"},
   kuzefuku:{date:"2026-11-20", kind:"start"},
-  deandeluca:{date:"2027-01-01", kind:"sale"}
+  deandeluca:{date:"2027-01-01", kind:"sale"},
+  kfc:{date:"2026-11-26", kind:"deadline"},
+  godiva:{date:"2026-12-25", kind:"deadline"},
+  mikihouse:{date:"2026-11-11", kind:"deadline"},
+  mistore:{date:"2026-11-19", kind:"start"},
+  daimaru:{date:"2026-12-25", kind:"deadline"},
+  iyec:{date:"2026-12-02", kind:"start"}
 };
 function cdOf(item){ return CD[item.id] || null; }
 function cdDays(item){ var c = cdOf(item); return c ? Math.round((dparse(c.date) - TODAY) / 86400000) : null; }
@@ -706,7 +776,7 @@ function render(){
     var cd;
     if(it.status==="ended"){ cd = '<div class="countdown done"><span class="num">終了</span>受付は締め切りました</div>'; }
     else if(!cdi){
-      var noneMsg = it.id==="seijoishii" ? "締切は未定（上限に達し次第終了）" : (it.id==="zoff" ? "オンライン先行販売中（在庫限り）" : "期間はブランドごとに異なります");
+      var noneMsg = it.id==="seijoishii" ? "締切は未定（上限に達し次第終了）" : (it.id==="zoff" ? "オンライン先行販売中（在庫限り）" : (it.id==="narumiya" ? "販売中（在庫限り）" : (it.id==="adidas" ? "販売中（数量限定・なくなり次第終了）" : "期間はブランドごとに異なります")));
       cd = '<div class="countdown done"><span>'+noneMsg+'</span></div>';
     }
     else if(dl<0){ cd = '<div class="countdown done"><span>'+(cdi.kind==="deadline" ? "受付は締め切りました" : "受付は始まっています")+'</span></div>'; }
