@@ -265,6 +265,21 @@ footer a{color:var(--red);text-decoration:none;font-weight:700}
 .ad-slot{margin:28px auto 4px;text-align:center}
 .ad-slot .ad-label{display:block;font-size:11px;color:#999;letter-spacing:.25em;margin-bottom:6px}
 
+/* ---------- BLACK FRIDAY ---------- */
+.bf-sec{margin:34px auto 6px}
+.bf-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+@media (max-width:760px){.bf-grid{grid-template-columns:1fr}}
+.bf-card{background:#17130f;border:1px solid #3a3125;border-radius:18px;overflow:hidden;display:flex;flex-direction:column;color:#f3ead9;box-shadow:0 2px 10px rgba(20,10,0,.18)}
+.bf-card .bf-top{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 14px;background:#000;color:#e8b64c;font-weight:900;font-size:12.5px;letter-spacing:.14em}
+.bf-badge{font-size:11px;font-weight:900;letter-spacing:.02em;padding:3px 9px;border-radius:999px;background:#e8b64c;color:#17130f;white-space:nowrap}
+.bf-badge.soon{background:#3a3125;color:#e8b64c;border:1px solid #e8b64c}
+.bf-badge.wait{background:#26211b;color:#b8a888;border:1px solid #4a4033}
+.bf-body{padding:14px 16px 16px;display:flex;flex-direction:column;gap:8px;flex:1}
+.bf-body b.bf-name{font-size:17px;color:#fff}
+.bf-period{font-size:15px;font-weight:900;color:#e8b64c;line-height:1.5}
+.bf-body p{margin:0;font-size:13px;line-height:1.75;color:#d9cfba}
+.bf-link{margin-top:auto;display:inline-block;align-self:flex-start;background:#e8b64c;color:#17130f;font-weight:900;font-size:13px;padding:8px 14px;border-radius:999px;text-decoration:none}
+
 /* ---------- MODAL ---------- */
 .modal-back{position:fixed;inset:0;background:rgba(20,10,5,.55);z-index:80;display:none;align-items:flex-end;justify-content:center;padding:0}
 .modal-back.open{display:flex}
@@ -306,7 +321,7 @@ footer a{color:var(--red);text-decoration:none;font-weight:700}
   <div class="wrap hero-grid">
     <div class="hero-copy">
       <div class="update-line">
-        <span class="pill live"><span class="dot"></span>2026年11月9日（月）更新</span>
+        <span class="pill live"><span class="dot"></span>2026年11月10日（火）更新</span>
         <span class="pill">2027年 新春福袋シーズン</span>
       </div>
       <h1>福袋ナビ <span class="yr">2027</span><br>迷ったら、締切の近い順。</h1>
@@ -332,6 +347,15 @@ footer a{color:var(--red);text-decoration:none;font-weight:700}
 </div>
 
 <!-- DEADLINE STRIP -->
+<!-- BLACK FRIDAY -->
+<section class="wrap bf-sec" id="blackfriday">
+  <div class="sec-head">
+    <h2>ブラックフライデー特集 2026</h2>
+    <p>本番は11月27日（金）。ただ日本のセールは前倒し開催が多く、開始日は各社バラバラです。発表済みのものから載せています</p>
+  </div>
+  <div class="bf-grid" id="bfGrid"></div>
+</section>
+
 <div class="strip" aria-label="締切が近い順">
   <div class="wrap strip-in" id="strip"></div>
 </div>
@@ -438,7 +462,7 @@ footer a{color:var(--red);text-decoration:none;font-weight:700}
 
 <footer>
   <div class="wrap">
-    <p><b>掲載について</b>　価格はすべて税込です。「相当」と表記した金額は各ブランド発表のお得度の目安で、実際の内訳とは異なる場合があります。受付期間・価格は変更・売り切れになることがあるため、申込前に必ず公式ページで最新情報をご確認ください。最終更新：2026年11月9日</p>
+    <p><b>掲載について</b>　価格はすべて税込です。「相当」と表記した金額は各ブランド発表のお得度の目安で、実際の内訳とは異なる場合があります。受付期間・価格は変更・売り切れになることがあるため、申込前に必ず公式ページで最新情報をご確認ください。最終更新：2026年11月10日</p>
     <p><b>広告について</b>　当サイトでは、第三者配信の広告サービス（忍者AdMax）を利用しています。広告配信事業者は、利用者の興味に応じた広告を表示するためにCookieを使用することがあります。</p>
     <p style="margin-bottom:6px"><b>情報ソース</b></p>
     <div class="src-list">
@@ -458,7 +482,7 @@ footer a{color:var(--red);text-decoration:none;font-weight:700}
 </div>
 
 <script>
-var TODAY = new Date(2026, 10, 9); // 2026-11-09 時点の情報で表示
+var TODAY = new Date(2026, 10, 10); // 2026-11-10 時点の情報で表示
 
 var ITEMS = [
   { id:"starbucks", brand:"スターバックス", name:"スターバックス福袋 2027", price:9500, priceLabel:"¥9,500", worth:"ドリンクチケット7枚入り",
@@ -502,13 +526,13 @@ var ITEMS = [
     note:"11月13日から公式ウェブストアで先行予約開始。店頭・ウェブストアでの発売は2027年1月1日です。",
     url:"https://news.yahoo.co.jp/articles/99a1100162d94deaa5cb4ff9a508000fa0ef3f77?page=1", urlLabel:"詳細ニュース（Yahoo!ニュース）" },
   { id:"nanacha", brand:"nana's green tea", name:"nana's green tea 福袋 2027", price:8900, priceLabel:"¥8,900", worth:"チケット最大¥11,680相当",
-    cat:"coffee", catLabel:"コーヒー・カフェ", area:"store", channel:"store", areaLabel:"全国の店舗", method:"予約", status:"active",
-    start:"2026-11-04", deadline:"2026-11-30", deadlineLabel:"事前ネット予約 〜11月30日（月）23:59",
+    cat:"coffee", catLabel:"コーヒー・カフェ", area:"store", channel:"both", areaLabel:"全国の店舗・オンライン", method:"予約", status:"active",
+    start:"2026-11-10", deadline:"2026-11-30", deadlineLabel:"店舗受取 11/10 12:00〜12/13／オンライン 11/11 12:00〜11/30",
     color:"#3e6b34", kanji:"茶",
-    desc:"抹茶ラテ缶やロールケーキポーチに、最大¥11,680相当分のチケットが付いた福袋。チケットだけでも価格以上の価値があるタイプです。",
-    contents:["抹茶ラテ缶","ロールケーキポーチ","最大¥11,680相当のチケット"],
-    note:"事前ネット予約は11月4日14:00〜11月30日23:59。普段から店舗を使う人ほどお得度が高い福袋です。",
-    url:"https://kobe-journal.com/archives/8698846356.html", urlLabel:"紹介記事（神戸ジャーナル）" },
+    desc:"抹茶ラテ缶やロールケーキポーチ、オリジナルマグカップに、最大¥11,680相当分のスペシャルチケットが付いた福袋。約2.2倍相当のお得なセットで、店舗受取とオンライン配送の両方から選べます。",
+    contents:["抹茶ラテ缶","オリジナルマグカップ","抹茶ロールケーキポーチ","抹茶フィナンシェ×3","パフェ・ドリンクチケット各4枚＋フード1,000円OFFチケット"],
+    note:"店舗受取分は11月10日（火）12:00〜12月13日（日）23:59、受取は12月22日〜28日。オンラインストア販売分は11月11日（水）12:00〜11月30日（月）23:59、送料込み¥9,400で12月24日〜28日にお届け。アプリ「茶人」会員先行は11月9日12:00〜。いずれも先着順・数量限定で、おひとり様4個まで。",
+    url:"https://www.nanasgreentea.com/pages/2027fukubukuro", urlLabel:"公式特設ページ（nana's green tea）" },
   { id:"doutor", brand:"ドトールコーヒー", name:"ドトール 福袋 2027（シナモロール コラボ）", price:2400, priceLabel:"¥2,400〜12,000", worth:null,
     cat:"coffee", catLabel:"コーヒー・カフェ", area:"store", channel:"store", areaLabel:"全国の店舗", method:"店頭予約", status:"active",
     start:"2026-11-01", deadline:"2026-12-25", deadlineLabel:"予約 〜12月25日／発売 12月26日〜",
@@ -613,6 +637,14 @@ var ITEMS = [
     contents:["掲載 410点以上（食品・ベビー＆キッズ・ホームほか）","ゴディバ、ミキハウス、メゾピアノなども販売中","次回ウェーブ：11月10日（火）10:00〜 レディース・メンズ"],
     note:"承り期間は2026年12月25日（金）10:00まで（一部商品は異なります）。注文後のキャンセル・返品・交換はできません。支払いはクレジットカード、PayPay、楽天ペイ、d払い、auかんたん決済。",
     url:"https://www.daimaru-matsuzakaya.jp/special/fukubukuro", urlLabel:"大丸松坂屋オンラインストア（公式）" },
+  { id:"seibusogo", brand:"西武・そごう", name:"西武・そごう e.デパート 福袋大市 2027", price:null, priceLabel:"ブランドごとに設定", worth:null,
+    cat:"dept", catLabel:"百貨店", area:"online", channel:"online", areaLabel:"全国オンライン", method:"先着", status:"active",
+    start:"2026-10-30", deadline:"2027-01-17", deadlineLabel:"2027年1月17日（日）23:59まで",
+    color:"#274156", kanji:"西",
+    desc:"西武・そごうの公式オンラインストア「e.デパート」の福袋特集。食品・ファッション・コスメ・キッズなど約120点が掲載中で、ブランドごとに価格が設定されています。",
+    contents:["イッタラ「2027福袋」¥33,000","BeBe「2027福袋 女児用」¥11,000","錦松梅「福袋」¥3,240","フィラ ゴルフ「レディース福袋5点セット」¥11,000","掲載 約120点（在庫あり）・予約商品 47点"],
+    note:"配送のみ・クレジットカード決済のみ。福袋1商品につき配送料¥660（税込）。注文後のキャンセル・返品・交換は不可。お届けは商品により異なり、1月1日以降が中心です。",
+    url:"https://edepart.sogo-seibu.jp/brand/002622", urlLabel:"e.デパート 福袋大市 2027（公式）" },
   { id:"iyec", brand:"イトーヨーカドー", name:"イトーヨーカドー 福袋 2027", price:null, priceLabel:"12月2日公開予定", worth:null,
     cat:"dept", catLabel:"百貨店", area:"online", channel:"online", areaLabel:"全国オンライン", method:"予約", status:"soon",
     start:"2026-12-02", deadline:"2026-12-02", deadlineLabel:"予約開始 12月2日（水）12:00〜",
@@ -1006,7 +1038,36 @@ document.getElementById("favOnly").addEventListener("click", function(){
   state.favOnly = !state.favOnly; this.setAttribute("aria-pressed", state.favOnly ? "true" : "false"); render();
 });
 
-renderChips(); renderMap(); renderAreas(); renderWatch(); renderStats(); renderStrip(); render();
+var BF_ITEMS = [
+  { store:"イオン", name:"イオン 超！ブラックフライデーフェス", badge:"先行セール開催中", badgeCls:"",
+    period:"店頭：11月20日（金）〜11月30日（月）／ネット先行：10月31日〜11月16日 9:59",
+    note:"全国のイオン・イオンスタイル約600店舗。冬物衣料や家電の「半額祭り」、ネット先行ではほぼ全品対象の15%OFFクーポン。店頭の本番は11月20日から。",
+    url:"https://chirashi.otoku.aeonsquare.net/blackfriday/", linkLabel:"イオン特設サイト" },
+  { store:"Amazon", name:"Amazon ブラックフライデー", badge:"詳細は11月19日発表", badgeCls:"soon",
+    period:"2026年11月開催（期間などの詳細は11月19日午前に発表）",
+    note:"年末最後のビッグセール。食品・日用品から家電、人気ブランドまで特別価格になると発表済み。開始日と目玉商品は11月19日の詳細発表で更新します。",
+    url:"https://www.aboutamazon.jp/news/retail/amazon-black-friday-2026", linkLabel:"公式発表（About Amazon）" },
+  { store:"Yahoo!ショッピング", name:"ブラックフライデー 2026", badge:"11月22日開始", badgeCls:"soon",
+    period:"11月22日（日）0:00〜11月29日（日）25:59",
+    note:"50％OFF以上を含む約1万点のセールに、PayPayポイント最大23％付与。毎晩20時からの日替わりクーポン（最大50％OFF）も。対象商品の一部は11月16日に事前公開。",
+    url:"https://shopping.yahoo.co.jp/promotion/campaign/blackfriday/", linkLabel:"Yahoo!ショッピング特設ページ" },
+  { store:"楽天市場", name:"楽天ブラックフライデー", badge:"発表待ち", badgeCls:"wait",
+    period:"2026年は未発表（前年は11月20日 20:00〜11月27日 1:59）",
+    note:"前年は買いまわりでポイント最大10倍。発表は例年、開始の約1週間前。今年の日時が分かり次第ここを更新します。",
+    url:"https://www.rakuten.co.jp/", linkLabel:"楽天市場トップ" }
+];
+function renderBF(){
+  var g = document.getElementById('bfGrid');
+  if(!g) return;
+  g.innerHTML = BF_ITEMS.map(function(it){
+    return '<article class="bf-card"><div class="bf-top"><span>BLACK FRIDAY</span><span class="bf-badge '+it.badgeCls+'">'+it.badge+'</span></div>'
+      + '<div class="bf-body"><b class="bf-name">'+it.store+'｜'+it.name+'</b>'
+      + '<div class="bf-period">'+it.period+'</div><p>'+it.note+'</p>'
+      + '<a class="bf-link" href="'+it.url+'" target="_blank" rel="noopener">'+it.linkLabel+'</a></div></article>';
+  }).join('');
+}
+
+renderChips(); renderMap(); renderAreas(); renderWatch(); renderStats(); renderStrip(); render(); renderBF();
 </script>
 </body>
 </html>
