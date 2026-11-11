@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mizomasa.github.io/site/sitemap.xml
+Sitemap: https://go-navi.github.io/nenmatsu-2027/sitemap.xml
