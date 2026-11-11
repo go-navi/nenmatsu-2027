@@ -312,6 +312,16 @@ footer a{color:var(--red);text-decoration:none;font-weight:700}
   .controls{position:static}
   .kv{grid-template-columns:88px 1fr}
 }
+
+/* ---------- SUBPAGE LINKS ---------- */
+.banner-brand a{color:inherit;text-decoration:none;border-bottom:2px solid rgba(255,255,255,.55)}
+.banner-brand a:hover{border-bottom-color:#fff}
+.guide-links{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:6px 0 30px}
+.guide-links a{display:block;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px 18px;text-decoration:none}
+.guide-links a b{font-family:"Shippori Mincho B1",serif;font-size:17px;display:block;margin-bottom:4px}
+.guide-links a span{font-size:13px;color:var(--ink2);line-height:1.6}
+.guide-links a:hover{border-color:var(--red)}
+@media (max-width:560px){.guide-links{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -458,6 +468,18 @@ footer a{color:var(--red);text-decoration:none;font-weight:700}
 <div class="wrap">
   <!-- admax -->
   <div class="ad-slot"><span class="ad-label">広告</span><script src="https://adm.shinobi.jp/s/2799666077782b98bb3650f6b2a7b366"></script></div>
+</div>
+
+<div class="wrap">
+  <!-- GUIDES -->
+  <div class="sec-head" style="margin-top:26px">
+    <h2>福袋ガイド</h2>
+    <p>買い方の基本と、よくある疑問への答え</p>
+  </div>
+  <div class="guide-links">
+    <a href="guide/how-to-buy.html"><b>福袋の買い方・予約方法ガイド</b><span>オンライン抽選・先着・店頭予約の違いと、申し込みの流れ、失敗しないための注意点をまとめました。</span></a>
+    <a href="guide/faq.html"><b>福袋のよくある質問</b><span>いつから買える？抽選と先着の違いは？支払い・受取・キャンセルについて、一般的な疑問に答えます。</span></a>
+  </div>
 </div>
 
 <footer>
@@ -723,6 +745,14 @@ var CD = {
   daimaru:{date:"2026-12-25", kind:"deadline"},
   iyec:{date:"2026-12-02", kind:"start"}
 };
+var BRAND_SLUGS = {
+  starbucks:"starbucks", yojiya:"yojiya", seijoishii:"seijo-ishii", komeda:"komeda",
+  cosmekitchen:"cosme-kitchen", nanacha:"nanas-green-tea", doutor:"doutor", tullys:"tullys",
+  zoff:"zoff", kuzefuku:"kuzefuku", feiler:"feiler", deandeluca:"dean-and-deluca",
+  takashimaya:"takashimaya", kfc:"kfc", godiva:"godiva", mikihouse:"mikihouse",
+  narumiya:"narumiya", adidas:"adidas", mistore:"mitsukoshi-isetan", daimaru:"daimaru-matsuzakaya",
+  seibusogo:"seibu-sogo", iyec:"ito-yokado", gelatopique:"gelato-pique"
+};
 function cdOf(item){ return CD[item.id] || null; }
 function cdDays(item){ var c = cdOf(item); return c ? Math.round((dparse(c.date) - TODAY) / 86400000) : null; }
 function cdWord(item){ var c = cdOf(item); if(!c) return ""; return c.kind==="deadline" ? "締切まで" : (c.kind==="sale" ? "発売まで" : "開始まで"); }
@@ -846,7 +876,7 @@ function render(){
       + channelStrip(it)
       + '<div class="card-banner" style="background:linear-gradient(135deg,'+it.color+','+it.color+'cc)">'
       +   '<span class="banner-pattern">'+it.kanji+'</span>'
-      +   '<div class="banner-brand">'+it.brand+'</div>'
+      +   '<div class="banner-brand"><a href="brands/'+(BRAND_SLUGS[it.id]||it.id)+'.html" aria-label="'+it.brand+'の福袋2027詳細ページ">'+it.brand+'</a></div>'
       +   '<div class="banner-cat">'+it.catLabel+'</div>'
       +   '<button class="fav-btn" data-fav="'+it.id+'" aria-pressed="'+(favs[it.id]?"true":"false")+'" aria-label="'+it.brand+'をお気に入りに追加">★</button>'
       + '</div>'
