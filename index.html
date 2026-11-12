@@ -331,7 +331,7 @@ footer a{color:var(--red);text-decoration:none;font-weight:700}
   <div class="wrap hero-grid">
     <div class="hero-copy">
       <div class="update-line">
-        <span class="pill live"><span class="dot"></span>2026年11月11日（水）更新</span>
+        <span class="pill live"><span class="dot"></span>2026年11月12日（木）更新</span>
         <span class="pill">2027年 新春福袋シーズン</span>
       </div>
       <h1>福袋ナビ <span class="yr">2027</span><br>迷ったら、締切の近い順。</h1>
@@ -376,7 +376,7 @@ footer a{color:var(--red);text-decoration:none;font-weight:700}
     <h2>日本地図から探す（実店舗）</h2>
     <p>実店舗で買えるものだけを表示 ・ 地域 → 都道府県の順にタップ</p>
   </div>
-  <p class="map-lead">この地図は<b>実店舗で買える福袋だけ</b>を数えています（<b>実店舗のみ</b>と<b>両方OK</b>のもの。オンラインでも買える「両方OK」も、店頭で買えるため含みます）。まず地図で<b>地方</b>を選ぶと、その下に<b>都道府県タイル</b>が出てきます。県をタップすれば、その県の店頭で買える福袋だけに絞り込めます（下の絞り込みバーにある都道府県プルダウンから直接選ぶこともできます）。全国の店舗で買える福袋は<b>どの県でも買える</b>として数えていて、いま県で差が出るのは京都発・関西中心の「よーじや」で、関西の各県では<b>9件</b>、ほかの県は<b>8件</b>が表示されます。<b>オンラインのみの4件</b>（スタバ、Zoff、フェイラー、ジェラピケ）は地図には含めず、地図横の「オンラインのみ」ボタンや買い方フィルタから探せます。地図は位置関係が分かるタイルマップ（模式図）です。</p>
+  <p class="map-lead">この地図は<b>実店舗で買える福袋だけ</b>を数えています（<b>実店舗のみ</b>と<b>両方OK</b>のもの。オンラインでも買える「両方OK」も、店頭で買えるため含みます）。まず地図で<b>地方</b>を選ぶと、その下に<b>都道府県タイル</b>が出てきます。県をタップすれば、その県の店頭で買える福袋だけに絞り込めます（下の絞り込みバーにある都道府県プルダウンから直接選ぶこともできます）。全国の店舗で買える福袋は<b>どの県でも買える</b>として数えていて、いま県で差が出るのは京都発・関西中心の「よーじや」で、関西の各県では<b><span id="mapLeadKansai"></span></b>、ほかの県は<b><span id="mapLeadOther"></span></b>が表示されます。<b>オンラインのみの<span id="mapLeadOnline"></span></b>は地図には含めず、地図横の「オンラインのみ」ボタンや買い方フィルタから探せます。地図は位置関係が分かるタイルマップ（模式図）です。</p>
   <div class="map-layout">
     <div class="map-board">
       <div class="map-board-label"><span>日本地図 — 実店舗で買える福袋（地域タイル）</span><span id="mapSelectedLabel">現在：全国（実店舗）を表示中</span></div>
@@ -388,7 +388,7 @@ footer a{color:var(--red);text-decoration:none;font-weight:700}
       <div class="map-panel" id="mapPanel"></div>
       <div class="map-quick">
         <button class="quick-card" data-map-quick="online"><b>オンラインのみ</b><span>店頭販売はなく、抽選・先着にスマホで申込。自宅に届くタイプだけを見る。</span><span class="n" id="quickOnlineCount"></span></button>
-        <button class="quick-card" data-map-quick="all"><b>全国すべて</b><span>地域で絞らず、掲載中の福袋を全部（オンライン含む）見比べる。地図の絞り込みを解除する。</span><span class="n">全13 件の福袋 →</span></button>
+        <button class="quick-card" data-map-quick="all"><b>全国すべて</b><span>地域で絞らず、掲載中の福袋を全部（オンライン含む）見比べる。地図の絞り込みを解除する。</span><span class="n" id="quickAllCount"></span></button>
       </div>
     </div>
   </div>
@@ -484,7 +484,7 @@ footer a{color:var(--red);text-decoration:none;font-weight:700}
 
 <footer>
   <div class="wrap">
-    <p><b>掲載について</b>　価格はすべて税込です。「相当」と表記した金額は各ブランド発表のお得度の目安で、実際の内訳とは異なる場合があります。受付期間・価格は変更・売り切れになることがあるため、申込前に必ず公式ページで最新情報をご確認ください。最終更新：2026年11月11日</p>
+    <p><b>掲載について</b>　価格はすべて税込です。「相当」と表記した金額は各ブランド発表のお得度の目安で、実際の内訳とは異なる場合があります。受付期間・価格は変更・売り切れになることがあるため、申込前に必ず公式ページで最新情報をご確認ください。最終更新：2026年11月12日</p>
     <p><b>広告について</b>　当サイトでは、第三者配信の広告サービス（忍者AdMax）を利用しています。広告配信事業者は、利用者の興味に応じた広告を表示するためにCookieを使用することがあります。</p>
     <p style="margin-bottom:6px"><b>情報ソース</b></p>
     <div class="src-list">
@@ -504,7 +504,7 @@ footer a{color:var(--red);text-decoration:none;font-weight:700}
 </div>
 
 <script>
-var TODAY = new Date(2026, 10, 11); // 2026-11-11 時点の情報で表示
+var TODAY = new Date(2026, 10, 12); // 2026-11-12 時点の情報で表示
 
 var ITEMS = [
   { id:"starbucks", brand:"スターバックス", name:"スターバックス福袋 2027", price:9500, priceLabel:"¥9,500", worth:"ドリンクチケット7枚入り",
@@ -609,7 +609,7 @@ var ITEMS = [
     color:"#7c2d3e", kanji:"百",
     desc:"にんべん、文明堂東京、WEDGWOOD、カステラ銀装など、百貨店ならではの食品・名品ブランドの福袋をまとめて買える特集。オンラインストアでの販売に加え、店舗では店頭抽選・店頭販売を行うブランドもあり、オンラインでも店頭でも買えます。老舗の味を贈りたい人に。",
     contents:["にんべん、文明堂東京などの食品福袋","WEDGWOOD などの名品ブランド"],
-    note:"ブランドごとに販売方法（オンラインの先着／抽選、店頭抽選・店頭販売）と期間が異なります。オンライン分は特集ページの「ブランドから選ぶ」から、店頭分は最寄り店舗の案内もあわせてご確認ください。11月11日（水）10時からは「年末年始をごちそうで彩る、厳選グルメ」ウェーブ（日本橋 千疋屋総本店ほか）を予定。11月4日にはナルミヤブランドの福袋も新登場しました。",
+    note:"ブランドごとに販売方法（オンラインの先着／抽選、店頭抽選・店頭販売）と期間が異なります。オンライン分は特集ページの「ブランドから選ぶ」から、店頭分は最寄り店舗の案内もあわせてご確認ください。11月11日（水）10時から「年末年始をごちそうで彩る、厳選グルメ」ウェーブ（日本橋 千疋屋総本店ほか）が販売開始。次回は11月25日（水）10時（スギモト、横濱文明堂、王子サーモンほか）、12月9日（水）10時も予告あり。11月4日にはナルミヤブランドの福袋も新登場しました。",
     url:"https://www.takashimaya.co.jp/shopping/special/fukubukuro/", urlLabel:"高島屋 福袋2027特集" },
   { id:"kfc", brand:"ケンタッキー", name:"ケンタ福袋", price:3900, priceLabel:"¥3,900", worth:"引換券 ¥5,280 相当",
     cat:"food", catLabel:"食品・グルメ", area:"store", channel:"store", areaLabel:"全国の店舗", method:"抽選", status:"soon",
@@ -629,7 +629,7 @@ var ITEMS = [
     url:"https://www.daimaru-matsuzakaya.jp/Item?prod=80031713&sku=80031713&cate=special_fukubukuro", urlLabel:"大丸松坂屋オンラインストア（公式）" },
   { id:"mikihouse", brand:"ミキハウス", name:"ミキハウス 福袋 2027", price:27500, priceLabel:"¥27,500〜220,000", worth:null,
     cat:"fashion", catLabel:"ファッション・雑貨", area:"store", channel:"both", areaLabel:"全国の店舗・オンライン", method:"先着予約", status:"active",
-    start:"2026-11-02", deadline:"2026-11-11", deadlineLabel:"12月3日お届け分は11月11日（水）23:59まで",
+    start:"2026-11-02", deadline:"2026-11-11", deadlineLabel:"WEB第2期間受付中（12月16日〜順次お届け）",
     color:"#9c2b2e", kanji:"子",
     desc:"ミキハウスとホットビスケッツの福袋。¥27,500（ホットビスケッツ）から¥220,000まで4タイプ。限定受注生産で、申込後のサイズ変更・キャンセルはできません。",
     contents:["¥220,000 — 3シーズン用ウエア 11点以上＋キャリーオンバッグ","¥110,000 — ウエア 9点以上＋キャリーオンバッグ","¥33,000 — ウエア 5点以上＋トートバッグ","¥27,500（ホットビスケッツ） — ウエア 4点＋トートバッグ"],
@@ -690,12 +690,18 @@ var ITEMS = [
     desc:"ルームウェアの人気ブランド。レディースA ¥13,200／B ¥15,400とメンズHOMME ¥15,400の3種類で、各5点入り。抽選受付は11月2日〜11月5日で終了しました。再販情報が出たら更新します。",
     contents:["レディース A ¥13,200 — 人気アイテム 5点","レディース B ¥15,400 — 人気アイテム 5点","メンズ HOMME ¥15,400 — 人気アイテム 5点"],
     note:"抽選は11月5日で終了。当落は11月18日（水）18:00以降にメールで通知されます。USAGI ONLINE では3種とも SOLD OUT。再販の続報はなし。",
-    url:"https://prtimes.jp/main/html/rd/p/000004576.000018505.html", urlLabel:"公式プレスリリース（PR TIMES）" }
+    url:"https://prtimes.jp/main/html/rd/p/000004576.000018505.html", urlLabel:"公式プレスリリース（PR TIMES）" },
+  { id:"kaldi", brand:"カルディコーヒーファーム", name:"カルディ 福袋 2027（食品・コーヒー 全5種）", price:6000, priceLabel:"¥3,500〜8,500", worth:null,
+    cat:"food", catLabel:"食品・グルメ", area:"store", channel:"both", areaLabel:"全国の店舗・オンライン", method:"抽選", status:"soon",
+    start:"2026-11-18", deadline:"2026-11-30", deadlineLabel:"抽選受付 11月18日〜（オンライン 〜11/30／アプリ 〜12/8）",
+    color:"#6d4c41", kanji:"咖",
+    desc:"食品福袋 ¥6,000（21点前後＋トートバッグ）とオンライン限定プレミアムコーヒー福袋 ¥8,500は事前抽選。人気セット ¥3,500、豪華セット ¥6,500、ドリップコーヒー福袋 ¥4,000の3種は初売りから店頭・オンラインで販売。",
+    contents:["食品福袋 ¥6,000 — 限定商品・もへじ干支商品など21点前後＋コットントート","プレミアムコーヒー福袋 ¥8,500 — ゲイシャなど希少豆3種＋COE入賞ドリップ（オンライン限定）","人気セット ¥3,500／豪華セット ¥6,500／ドリップ ¥4,000 — 初売りから販売"],
+    note:"食品福袋の抽選は公式アプリ（11/18 0:00〜12/8 23:59、受取は初売り〜1/5）と公式オンラインストア（11/18 10:00〜11/30 23:59）の両方から申込可能（各1個まで）。当選発表はアプリ12/18、オンライン1次12/2・2次12/11。プレミアムコーヒー福袋も同じ期間で抽選（1次12/1・2次12/11）。",
+    url:"https://www.kaldi.co.jp/news/pickup/fukubukuro.html", urlLabel:"カルディ公式「2027年カルディコーヒーファームの福袋」" }
 ];
 
 var WATCH = [
-  { brand:"カルディコーヒーファーム", sub:"食品福袋・コーヒー福袋 全5種", tag:"11月中旬に発表見込み",
-    text:"前年（2026年版）は11月12日に詳細発表、11月19日から公式アプリとオンラインで抽選受付でした。価格は食品福袋 ¥5,500、オンライン限定プレミアム ¥8,000 など。今年も同じ時期の発表が濃厚です。" },
   { brand:"無印良品", sub:"福缶", tag:"11月下旬に抽選見込み",
     text:"前年の「福缶2026」は ¥2,026 で、2,026円分の MUJI GIFT CARD と各地の職人の縁起物（全40種から1点）入り。抽選は11月20日〜12月1日でした。2027年版は ¥2,027 になる見込みです。" },
   { brand:"マクドナルド", sub:"福袋（グッズ＋商品無料券）", tag:"12月発表見込み",
@@ -740,7 +746,7 @@ var CD = {
   deandeluca:{date:"2027-01-01", kind:"sale"},
   kfc:{date:"2026-11-26", kind:"deadline"},
   godiva:{date:"2026-12-25", kind:"deadline"},
-  mikihouse:{date:"2026-11-11", kind:"deadline"},
+  kaldi:{date:"2026-11-18", kind:"start"},
   mistore:{date:"2026-11-19", kind:"start"},
   daimaru:{date:"2026-12-25", kind:"deadline"},
   iyec:{date:"2026-12-02", kind:"start"}
@@ -963,13 +969,13 @@ function renderMap(){
   if(panel){
     if(state.pref!=="all"){
       var pn = prefCount(state.pref);
-      var pextra = prefObj(state.pref).region==="kansai" ? "関西の県なので、京都発「よーじや」を含む実店舗で買える9件が対象です（オンラインのみの福袋は含みません）。" : "全国の店舗で買える実店舗向けの8件が対象です。関西限定の「よーじや」と、オンラインのみの福袋は含まれません。";
+      var pextra = prefObj(state.pref).region==="kansai" ? "関西の県なので、京都発「よーじや」を含む実店舗で買える" + pn + "件が対象です（オンラインのみの福袋は含みません）。" : "全国の店舗で買える実店舗向けの" + pn + "件が対象です。関西限定の「よーじや」と、オンラインのみの福袋は含まれません。";
       panel.innerHTML = '<div class="kicker">選択中の都道府県（実店舗）</div><h3>'+prefLabel(state.pref)+' — <b>'+pn+'件</b></h3><p>'+regionLabel(prefObj(state.pref).region)+'地方の県です。'+pextra+'</p><div class="map-panel-actions"><button class="primary" data-map-action="list">この県の一覧を見る ↓</button><button data-map-action="region">地方全体に戻す</button><button data-map-action="all">全国に戻す</button></div>';
     } else if(state.region==="all"){
-      panel.innerHTML = '<div class="kicker">選択中の地域（実店舗）</div><h3>全国（実店舗） — <b>'+storeAvailableCount()+'件</b></h3><p>地図の地域タイルをタップすると、その地域の実店舗で買える福袋だけに一覧が切り替わります。地方を選ぶと都道府県タイルも出てきて、県単位まで絞れます。地図に含むのは実店舗のみ ' + channelCount("store") + '件と両方OK ' + channelCount("both") + '件で、オンラインのみ ' + channelCount("online") + '件は含みません（オンラインのみは下のボタンや買い方フィルタから）。関西には京都の「よーじや」が加わります。</p><div class="map-panel-actions"><button class="primary" data-map-action="kansai">関西（9件）を見る</button><button data-map-action="online">オンラインのみ</button></div>';
+      panel.innerHTML = '<div class="kicker">選択中の地域（実店舗）</div><h3>全国（実店舗） — <b>'+storeAvailableCount()+'件</b></h3><p>地図の地域タイルをタップすると、その地域の実店舗で買える福袋だけに一覧が切り替わります。地方を選ぶと都道府県タイルも出てきて、県単位まで絞れます。地図に含むのは実店舗のみ ' + channelCount("store") + '件と両方OK ' + channelCount("both") + '件で、オンラインのみ ' + channelCount("online") + '件は含みません（オンラインのみは下のボタンや買い方フィルタから）。関西には京都の「よーじや」が加わります。</p><div class="map-panel-actions"><button class="primary" data-map-action="kansai">関西（' + regionCount("kansai") + '件）を見る</button><button data-map-action="online">オンラインのみ</button></div>';
     } else {
       var rn = regionCount(state.region);
-      var extra = state.region==="kansai" ? "京都発「よーじや」を含む、実店舗で買える9件が対象です（オンラインのみの福袋は含みません）。" : "全国の店舗で買える実店舗向けの8件が対象です。関西限定の「よーじや」と、オンラインのみの福袋は含まれません。";
+      var extra = state.region==="kansai" ? "京都発「よーじや」を含む、実店舗で買える" + rn + "件が対象です（オンラインのみの福袋は含みません）。" : "全国の店舗で買える実店舗向けの" + rn + "件が対象です。関西限定の「よーじや」と、オンラインのみの福袋は含まれません。";
       var regionObj = REGIONS.filter(function(r){return r.key===state.region;})[0];
       panel.innerHTML = '<div class="kicker">選択中の地域（実店舗）</div><h3>'+regionObj.label+' — <b>'+rn+'件</b></h3><p>'+regionObj.note+'。'+extra+'地図の下の都道府県タイルから、県単位まで絞り込めます。</p><div class="map-panel-actions"><button class="primary" data-map-action="list">この地域の一覧を見る ↓</button><button data-map-action="all">全国に戻す</button></div>';
     }
@@ -985,6 +991,14 @@ function renderMap(){
   }
   var qo = document.getElementById("quickOnlineCount");
   if(qo){ qo.textContent = channelCount("online") + " 件の福袋 →"; }
+  var qa = document.getElementById("quickAllCount");
+  if(qa){ qa.textContent = "全" + ITEMS.length + " 件の福袋 →"; }
+  var mlk = document.getElementById("mapLeadKansai");
+  if(mlk){ mlk.textContent = regionCount("kansai") + "件"; }
+  var mlo = document.getElementById("mapLeadOther");
+  if(mlo){ mlo.textContent = regionCount("kanto") + "件"; }
+  var mlon = document.getElementById("mapLeadOnline");
+  if(mlon){ mlon.textContent = channelCount("online") + "件"; }
 }
 
 function renderAreas(){
