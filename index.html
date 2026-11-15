@@ -331,7 +331,7 @@ footer a{color:var(--red);text-decoration:none;font-weight:700}
   <div class="wrap hero-grid">
     <div class="hero-copy">
       <div class="update-line">
-        <span class="pill live"><span class="dot"></span>2026年11月14日（土）更新</span>
+        <span class="pill live"><span class="dot"></span>2026年11月15日（日）更新</span>
         <span class="pill">2027年 新春福袋シーズン</span>
       </div>
       <h1>福袋ナビ <span class="yr">2027</span><br>迷ったら、締切の近い順。</h1>
@@ -484,7 +484,7 @@ footer a{color:var(--red);text-decoration:none;font-weight:700}
 
 <footer>
   <div class="wrap">
-    <p><b>掲載について</b>　価格はすべて税込です。「相当」と表記した金額は各ブランド発表のお得度の目安で、実際の内訳とは異なる場合があります。受付期間・価格は変更・売り切れになることがあるため、申込前に必ず公式ページで最新情報をご確認ください。最終更新：2026年11月14日</p>
+    <p><b>掲載について</b>　価格はすべて税込です。「相当」と表記した金額は各ブランド発表のお得度の目安で、実際の内訳とは異なる場合があります。受付期間・価格は変更・売り切れになることがあるため、申込前に必ず公式ページで最新情報をご確認ください。最終更新：2026年11月15日</p>
     <p><b>広告について</b>　当サイトでは、第三者配信の広告サービス（忍者AdMax）を利用しています。広告配信事業者は、利用者の興味に応じた広告を表示するためにCookieを使用することがあります。</p>
     <p style="margin-bottom:6px"><b>情報ソース</b></p>
     <div class="src-list">
@@ -504,7 +504,7 @@ footer a{color:var(--red);text-decoration:none;font-weight:700}
 </div>
 
 <script>
-var TODAY = new Date(2026, 10, 14); // 2026-11-14 時点の情報で表示
+var TODAY = new Date(2026, 10, 15); // 2026-11-15 時点の情報で表示
 
 var ITEMS = [
   { id:"starbucks", brand:"スターバックス", name:"スターバックス福袋 2027", price:9500, priceLabel:"¥9,500", worth:"ドリンクチケット7枚入り",
@@ -722,7 +722,15 @@ var ITEMS = [
     desc:"ナチュラル＆オーガニックのセレクトショップ「Biople（ビープル）」の福袋。人気のシートマスク5種類などを詰めた「ビューティー」と、人気のインナーケアアイテムを詰めた「インナーケア」の2種で、どちらも通常価格から48%OFF。2027年の干支「未（ひつじ）」をモチーフにしたオリジナルバッグ入りです。",
     contents:["ビューティー ¥7,777 — to/oneブースターセラム、N organicバランシングローション、SINN PURETEマルチベネフィットオイル、シートマスク5種、サンプル＋オリジナルバッグ","インナーケア ¥4,833 — あおつぶパック42包、青パパイヤ酵素EXボトル、to/one VCショット、百年はちみつグミなど＋オリジナルバッグ"],
     note:"先行予約は公式ウェブストア（MASH GO GREEN STORE）限定で、11月13日10:00から12月17日23:59まで（予約特典＋5％ポイントアップ）。店頭・ウェブストアでの発売は2027年1月1日（Biople・Biop全国店舗）。数量限定で、なくなり次第終了。商品によっては一部店舗で取り扱いがない場合があります。",
-    url:"https://www.cosmekitchen-webstore.jp/Page/Lp/luckybag/", urlLabel:"公式特設ページ（MASH GO GREEN STORE）" }
+    url:"https://www.cosmekitchen-webstore.jp/Page/Lp/luckybag/", urlLabel:"公式特設ページ（MASH GO GREEN STORE）" },
+  { id:"samantha", brand:"サマンサタバサ", name:"サマンサタバサ ハッピーバッグ", price:22000, priceLabel:"¥22,000", worth:"バッグ＋小物2点",
+    cat:"fashion", catLabel:"ファッション・雑貨", area:"online", channel:"online", areaLabel:"大丸松坂屋オンラインストア", method:"先着予約", status:"active",
+    start:null, deadline:"2026-12-14", deadlineLabel:"予約受付中 〜12月14日（月）10:00",
+    color:"#b03a6b", kanji:"鞄",
+    desc:"サマンサタバサのハッピーバッグ。バッグと小物が入ったお得なセットで、色やデザインは選べないランダム仕様。大丸松坂屋オンラインストア（大丸札幌店）で予約受付中。",
+    contents:["バッグ 1点","小物 1点"],
+    note:"大丸松坂屋オンラインストアで予約受付中（2026年11月15日確認）。承りは2026年12月14日（月）10:00まで。お届けは2027年1月6日〜10日の指定日時（離島を除く全国）。送料は税込495円。注文後のキャンセル・返品・交換は不可。店頭販売は現時点で未発表。",
+    url:"https://www.daimaru-matsuzakaya.jp/Item?prod=90750515&sku=90750515", urlLabel:"大丸松坂屋オンラインストア「サマンサタバサ ハッピーバッグ」" }
 ];
 
 var WATCH = [
@@ -773,7 +781,8 @@ var CD = {
   daimaru:{date:"2026-12-25", kind:"deadline"},
   iyec:{date:"2026-12-02", kind:"start"},
   misdo:{date:"2026-12-11", kind:"start"},
-  biople:{date:"2026-12-17", kind:"deadline"}
+  biople:{date:"2026-12-17", kind:"deadline"},
+  samantha:{date:"2026-12-14", kind:"deadline"}
 };
 var BRAND_SLUGS = {
   starbucks:"starbucks", yojiya:"yojiya", seijoishii:"seijo-ishii", komeda:"komeda",
@@ -1135,7 +1144,23 @@ var BF_ITEMS = [
   { store:"ビックカメラ", name:"ビックカメラのブラックフライデー", badge:"開催中", badgeCls:"",
     period:"11月13日（金）〜11月30日（月）",
     note:"全店とビックカメラ.comで開催中。目玉商品は数量限定の特別価格（Mac mini M6が15,000円引き、BOSEイヤホン21,800円など）。対象商品は最大＋5％ポイントアップ、Suica×teppay併用で最大20％。11月13日〜23日はまとめ割、年末ビックジャンボも同時開催。",
-    url:"https://www.biccamera.com/bc/c/sale/daily/index.jsp", linkLabel:"ビックカメラ.com 特設ページ" }
+    url:"https://www.biccamera.com/bc/c/sale/daily/index.jsp", linkLabel:"ビックカメラ.com 特設ページ" },
+  { store:"ドン・キホーテ", name:"驚ブラックフライデー", badge:"開催中", badgeCls:"",
+    period:"11月13日（金）〜11月29日（日）",
+    note:"全国のドン・キホーテ、アピタ・ピアゴ等で開催中。majicaアプリの宝箱企画で最大96倍のポイント還元を狙える先行企画も実施。第2弾チラシは11月20日から。",
+    url:"https://www.majica-net.com/campaign/2026_blackfriday/", linkLabel:"majica 特設サイト" },
+  { store:"イトーヨーカドー", name:"イトーヨーカドー ブラックフライデー", badge:"11月18日開始", badgeCls:"soon",
+    period:"11月18日（水）〜11月29日（日）／ネット通販：10月30日〜11月30日",
+    note:"物価高対抗『赤と黒の祭典』。11月18日〜20日は『レッドプライスデー』、11月25日〜27日は『96（クロ）プライス』と新設の『よりどり4点960円』を展開。ネット通販は先行開催中。",
+    url:"https://iyec.itoyokado.co.jp/shop/r/rW4/", linkLabel:"イトーヨーカドーネット通販 特設サイト" },
+  { store:"カインズ", name:"カインズ ブラックフライデーセール", badge:"開催中", badgeCls:"",
+    period:"11月11日（水）〜11月23日（月）",
+    note:"全国のカインズ店舗で開催中。日用品や家電などをお手ごろ価格で販売。11月14日・15日は213店舗で税込3,000円以上の購入者にカインズバッグをプレゼント。オンラインショップ限定セールも同時開催。",
+    url:"https://www.cainz.com/contents/sale/blackfriday.html", linkLabel:"カインズ 特設サイト" },
+  { store:"ユニクロ", name:"ユニクロ感謝祭", badge:"11月20日開始", badgeCls:"soon",
+    period:"11月20日（金）〜11月26日（木）",
+    note:"ブラックフライデー時期の7日間の感謝祭。初日11月20日は来店先着で木村屋總本店の「UNIQLOあんぱん」をプレゼント。11月20日〜23日は税込10,000円以上の購入で「パッカブルビッグトートバッグ」をプレゼント。UNIQLO and Cecilie Bahnsen 2026年秋冬コレクションも11月20日発売。",
+    url:"https://www.uniqlo.com/jp/ja/special-feature/kanshasai", linkLabel:"ユニクロ 特設ページ" }
 ];
 function renderBF(){
   var g = document.getElementById('bfGrid');
