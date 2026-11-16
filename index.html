@@ -331,11 +331,11 @@ footer a{color:var(--red);text-decoration:none;font-weight:700}
   <div class="wrap hero-grid">
     <div class="hero-copy">
       <div class="update-line">
-        <span class="pill live"><span class="dot"></span>2026年11月15日（日）更新</span>
+        <span class="pill live"><span class="dot"></span>2026年11月16日（月）更新</span>
         <span class="pill">2027年 新春福袋シーズン</span>
       </div>
       <h1>福袋ナビ <span class="yr">2027</span><br>迷ったら、締切の近い順。</h1>
-      <p class="hero-sub">スタバの抽選は11月15日まで、コメダは11月11日から店頭予約スタート。今年の福袋は「抽選・先着・店頭予約」が入り混じるから、買い方と締切を1枚で見比べられるようにまとめました。各カードの色帯で、<b>青＝オンラインのみ／オレンジ＝実店舗のみ／緑＝両方OK</b> が一目で分かります。</p>
+      <p class="hero-sub">スタバの抽選は11月15日で終了、よーじやは11月15日からオンライン予約受付中。コメダは11月11日から店頭予約スタート。今年の福袋は「抽選・先着・店頭予約」が入り混じるから、買い方と締切を1枚で見比べられるようにまとめました。各カードの色帯で、<b>青＝オンラインのみ／オレンジ＝実店舗のみ／緑＝両方OK</b> が一目で分かります。</p>
       <div class="hero-stats">
         <div class="stat"><b id="statTotal">–</b><span>掲載中の福袋</span></div>
         <div class="stat"><b id="statActive">–</b><span>いま申込・予約できる</span></div>
@@ -484,7 +484,7 @@ footer a{color:var(--red);text-decoration:none;font-weight:700}
 
 <footer>
   <div class="wrap">
-    <p><b>掲載について</b>　価格はすべて税込です。「相当」と表記した金額は各ブランド発表のお得度の目安で、実際の内訳とは異なる場合があります。受付期間・価格は変更・売り切れになることがあるため、申込前に必ず公式ページで最新情報をご確認ください。最終更新：2026年11月15日</p>
+    <p><b>掲載について</b>　価格はすべて税込です。「相当」と表記した金額は各ブランド発表のお得度の目安で、実際の内訳とは異なる場合があります。受付期間・価格は変更・売り切れになることがあるため、申込前に必ず公式ページで最新情報をご確認ください。最終更新：2026年11月16日</p>
     <p><b>広告について</b>　当サイトでは、第三者配信の広告サービス（忍者AdMax）を利用しています。広告配信事業者は、利用者の興味に応じた広告を表示するためにCookieを使用することがあります。</p>
     <p style="margin-bottom:6px"><b>情報ソース</b></p>
     <div class="src-list">
@@ -504,25 +504,25 @@ footer a{color:var(--red);text-decoration:none;font-weight:700}
 </div>
 
 <script>
-var TODAY = new Date(2026, 10, 15); // 2026-11-15 時点の情報で表示
+var TODAY = new Date(2026, 10, 16); // 2026-11-16 時点の情報で表示
 
 var ITEMS = [
   { id:"starbucks", brand:"スターバックス", name:"スターバックス福袋 2027", price:9500, priceLabel:"¥9,500", worth:"ドリンクチケット7枚入り",
-    cat:"coffee", catLabel:"コーヒー・カフェ", area:"online", channel:"online", areaLabel:"全国オンライン", method:"抽選", status:"active",
-    start:"2026-11-04", deadline:"2026-11-15", deadlineLabel:"11月15日（日）23:59",
+    cat:"coffee", catLabel:"コーヒー・カフェ", area:"online", channel:"online", areaLabel:"全国オンライン", method:"抽選", status:"ended",
+    start:"2026-11-04", deadline:"2026-11-15", deadlineLabel:"抽選受付は11月15日で終了",
     color:"#1e5c46", kanji:"珈",
-    desc:"絞って形を変えられるトートバッグ、福袋限定ステンレスボトル、コーヒー豆、ドリンクチケット7枚のセット。店頭販売はなく、公式オンラインストアの抽選のみ。",
+    desc:"絞って形を変えられるトートバッグ、福袋限定ステンレスボトル、コーヒー豆、ドリンクチケット7枚のセット。店頭販売はなく、公式オンラインストアの抽選のみ。抽選エントリーは11月15日で終了しました。",
     contents:["アレンジできるトートバッグ","福袋限定ステンレスボトル","コーヒー豆","ドリンクチケット 7枚"],
-    note:"エントリーには My Starbucks の本会員登録が必要です（アプリ仮会員は対象外）。当選発表は11月25日、配送は2027年1月1日〜7日。ゴールド会員は自動で2口分として抽選されます。",
+    note:"抽選エントリーは11月15日（日）23:59で終了。当選発表は11月25日（水）11時〜17時ごろ（メールとMy StarbucksのInboxで通知）、購入手続きは12月2日（水）23:59まで。配送は2027年1月1日〜7日。",
     url:"https://www.oricon.co.jp/news/2489720/full/", urlLabel:"詳細ニュース（ORICON）" },
-  { id:"yojiya", brand:"よーじや", name:"よーじや 福袋 2027", price:null, priceLabel:"公式で確認", worth:"約¥26,000相当入り",
-    cat:"beauty", catLabel:"コスメ・美容", area:"kansai", channel:"both", areaLabel:"京都・オンライン", method:"先着予約", status:"soon",
-    start:"2026-11-15", deadline:"2026-12-01", deadlineLabel:"オンライン 11月15日〜／店頭予約 12月1日〜",
+  { id:"yojiya", brand:"よーじや", name:"よーじや 福袋 2027", price:10000, priceLabel:"¥10,000", worth:"約¥26,000相当入り",
+    cat:"beauty", catLabel:"コスメ・美容", area:"kansai", channel:"both", areaLabel:"京都・オンライン", method:"先着予約", status:"active",
+    start:"2026-11-15", deadline:"2027-01-15", deadlineLabel:"オンライン予約受付中 11月15日〜／店頭販売 1月1日〜15日",
     color:"#8a3b5e", kanji:"粧",
     desc:"京都発のあぶらとり紙で知られるブランド。人気の香りシリーズ「まゆごもり」「はなほのか」「ゆずつやや」のスキンケアなど全12点。届くのはランダムA／Bのどちらか。",
     contents:["香りシリーズのスキンケア 計12点","「まゆごもり」「はなほのか」「ゆずつやや」など"],
-    note:"いちばん早いのは公式オンラインショップで11月15日（日）10:00から。店頭予約は12月1日からで、オンラインより遅いので注意。",
-    url:"https://kobe-journal.com/archives/8698846356.html", urlLabel:"紹介記事（神戸ジャーナル）" },
+    note:"公式オンラインショップで11月15日（日）10:00から予約受付中（予定数に達し次第終了、1人1点まで）。発送は12月下旬以降順次。店頭予約は12月1日〜31日、店頭販売は2027年1月1日〜15日。",
+    url:"https://www.yojiyacosme.com/2026/11/05/happybag2027/", urlLabel:"よーじや公式「よーじやハッピーバッグ 2027」" },
   { id:"seijoishii", brand:"成城石井", name:"成城石井 福袋 2027", price:3490, priceLabel:"¥3,490〜6,390", worth:null,
     cat:"food", catLabel:"食品・グルメ", area:"store", channel:"both", areaLabel:"全国の店舗・オンライン", method:"予約", status:"active",
     start:"2026-11-01", deadline:"2026-12-25", deadlineLabel:"予約受付中（上限に達し次第終了）",
@@ -1125,9 +1125,9 @@ document.getElementById("favOnly").addEventListener("click", function(){
 });
 
 var BF_ITEMS = [
-  { store:"イオン", name:"イオン 超！ブラックフライデーフェス", badge:"先行セール開催中", badgeCls:"",
+  { store:"イオン", name:"イオン 超！ブラックフライデーフェス", badge:"店頭本番は11月20日〜", badgeCls:"soon",
     period:"店頭：11月20日（金）〜11月30日（月）／ネット先行：10月31日〜11月16日 9:59",
-    note:"本州（東北地区除く）・四国のイオン・イオンスタイル直営売場。ネット先行ではほぼ全品対象の15%OFFクーポン（10/31 10:00〜11/16 9:59）。店頭の本番は11月20日から。",
+    note:"本州（東北地区除く）・四国のイオン・イオンスタイル直営売場。ネット先行（10/31 10:00〜11/16 9:59）は終了。店頭の本番は11月20日から。",
     url:"https://chirashi.otoku.aeonsquare.net/blackfriday/", linkLabel:"イオン特設サイト" },
   { store:"Amazon", name:"Amazon ブラックフライデー", badge:"詳細は11月19日発表", badgeCls:"soon",
     period:"2026年11月開催（期間などの詳細は11月19日午前に発表）",
@@ -1160,7 +1160,11 @@ var BF_ITEMS = [
   { store:"ユニクロ", name:"ユニクロ感謝祭", badge:"11月20日開始", badgeCls:"soon",
     period:"11月20日（金）〜11月26日（木）",
     note:"ブラックフライデー時期の7日間の感謝祭。初日11月20日は来店先着で木村屋總本店の「UNIQLOあんぱん」をプレゼント。11月20日〜23日は税込10,000円以上の購入で「パッカブルビッグトートバッグ」をプレゼント。UNIQLO and Cecilie Bahnsen 2026年秋冬コレクションも11月20日発売。",
-    url:"https://www.uniqlo.com/jp/ja/special-feature/kanshasai", linkLabel:"ユニクロ 特設ページ" }
+    url:"https://www.uniqlo.com/jp/ja/special-feature/kanshasai", linkLabel:"ユニクロ 特設ページ" },
+  { store:"Google ストア", name:"Google ストア ブラックフライデーセール", badge:"11月20日開始", badgeCls:"soon",
+    period:"11月20日（金）7:00〜12月3日（木）6:59",
+    note:"Pixel 11 Pro XLは2万円引き＋最大25,000円分のストアポイント、Pixel 11 Pro Foldは最大45,000円分のポイント。下取りと組み合わせると実質最大14万5,000円分お得。直営店のGoogle Store 表参道でも同じ内容。",
+    url:"https://store.google.com/jp/magazine/black-friday-deals?hl=ja", linkLabel:"Google ストア 特設ページ" }
 ];
 function renderBF(){
   var g = document.getElementById('bfGrid');
