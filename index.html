@@ -335,7 +335,7 @@ footer a{color:var(--red);text-decoration:none;font-weight:700}
         <span class="pill">2027年 新春福袋シーズン</span>
       </div>
       <h1>福袋ナビ <span class="yr">2027</span><br>迷ったら、締切の近い順。</h1>
-      <p class="hero-sub">final福袋2027は明日11月21日正午から販売開始、モスバーガーのハイキュー!!コラボ福袋は11月25日15時からネット予約開始。ビックカメラの新春福箱は抽選受付中（11月25日締切）。今年の福袋は「抽選・先着・店頭予約」が入り混じるから、買い方と締切を1枚で見比べられるようにまとめました。各カードの色帯で、<b>青＝オンラインのみ／オレンジ＝実店舗のみ／緑＝両方OK</b> が一目で分かります。</p>
+      <p class="hero-sub">Amazonブラックフライデーの日程が発表されました（先行11月27日〜、本セール11月30日〜12月7日）。久世福商店の福袋は本日11月20日9時から一般販売開始、楽天ブラックフライデーは今夜20時から。イオンの店頭本番とユニクロ感謝祭も本日から。ビックカメラの新春福箱は抽選受付中（11月25日締切）。今年の福袋は「抽選・先着・店頭予約」が入り混じるから、買い方と締切を1枚で見比べられるようにまとめました。各カードの色帯で、<b>青＝オンラインのみ／オレンジ＝実店舗のみ／緑＝両方OK</b> が一目で分かります。</p>
       <div class="hero-stats">
         <div class="stat"><b id="statTotal">–</b><span>掲載中の福袋</span></div>
         <div class="stat"><b id="statActive">–</b><span>いま申込・予約できる</span></div>
@@ -580,12 +580,12 @@ var ITEMS = [
     note:"オンライン先行販売が始まっています。在庫限りなので、度付きメガネの買い替えを考えている人は早めにどうぞ。",
     url:"https://kobe-journal.com/archives/8698846356.html", urlLabel:"紹介記事（神戸ジャーナル）" },
   { id:"kuzefuku", brand:"久世福商店", name:"久世福商店 福袋 2027", price:3000, priceLabel:"¥3,000〜15,000", worth:null,
-    cat:"food", catLabel:"食品・グルメ", area:"store", channel:"both", areaLabel:"全国の店舗・オンライン", method:"予約", status:"soon",
-    start:"2026-11-20", deadline:"2027-01-05", deadlineLabel:"販売・予約 11月20日〜",
+    cat:"food", catLabel:"食品・グルメ", area:"store", channel:"both", areaLabel:"全国の店舗・オンライン", method:"予約", status:"active",
+    start:"2026-11-20", deadline:"2027-01-05", deadlineLabel:"一般販売・予約受付中 11月20日〜",
     color:"#8a5a1e", kanji:"福",
     desc:"だしやごはんのお供で人気の食品セレクトの福袋。¥3,000の入門タイプから¥15,000の豪華タイプまで、贈り物にも使える幅広い構成。",
     contents:["¥3,000〜¥15,000 の複数タイプ","だし・調味料・ごはんのお供など"],
-    note:"販売・予約は11月20日から。自宅用にも手土産用にも使いやすい食品系です。",
+    note:"一般販売は11月20日9:00から開始済み（先行は会員限定11/13〜）。店頭受取は12月25日から。特選・極はオンライン限定。自宅用にも手土産用にも使いやすい食品系です。",
     url:"https://kobe-journal.com/archives/8698846356.html", urlLabel:"紹介記事（神戸ジャーナル）" },
   { id:"feiler", brand:"フェイラー", name:"FEILER HAPPY PACK 2027", price:17600, priceLabel:"¥17,600〜23,100", worth:null,
     cat:"fashion", catLabel:"ファッション・雑貨", area:"online", channel:"online", areaLabel:"全国オンライン限定", method:"予約", status:"soon",
@@ -653,10 +653,10 @@ var ITEMS = [
     url:"https://www.rakuten.co.jp/supersportsxebio/contents/fukubukuro2027/", urlLabel:"スーパースポーツゼビオ 楽天市場店（公式）" },
   { id:"mistore", brand:"三越伊勢丹", name:"三越伊勢丹 新春福袋 2027", price:null, priceLabel:"ブランドごとに設定", worth:null,
     cat:"dept", catLabel:"百貨店", area:"online", channel:"online", areaLabel:"全国オンライン", method:"先着予約", status:"active",
-    start:"2026-10-21", deadline:"2027-01-20", deadlineLabel:"オンラインで順次販売中／次回 11月19日（木）10時〜 コスメ",
+    start:"2026-10-21", deadline:"2027-01-20", deadlineLabel:"オンラインで順次販売中／11月19日（木）10時〜 コスメ販売中",
     color:"#22406b", kanji:"越",
-    desc:"三越伊勢丹オンラインストアの福袋特集。ブランドごとにウェーブ販売され、10月21日・10月26日に続いて、次回は11月19日（木）10:00からコスメ福袋が登場します。12月以降のブランドは11月下旬に公開予定。",
-    contents:["ブランドごとに販売（食品・コスメ・ファッションほか）","次回ウェーブ：11月19日（木）10:00〜 コスメ","お届け：年内届 12月18日〜31日／年明け届 2027年1月5日〜9日／1月中旬届 1月14日〜20日"],
+    desc:"三越伊勢丹オンラインストアの福袋特集。ブランドごとにウェーブ販売され、10月21日・10月26日に続いて、11月19日（木）10:00からコスメ福袋が販売中です。12月以降のブランドは11月下旬に公開予定。",
+    contents:["ブランドごとに販売（食品・コスメ・ファッションほか）","最新ウェーブ：11月19日（木）10:00〜 コスメ","お届け：年内届 12月18日〜31日／年明け届 2027年1月5日〜9日／1月中旬届 1月14日〜20日"],
     note:"販売ブランドはウェーブごとに公開されます。12月以降の販売ブランドは11月下旬に公開予定です。",
     url:"https://www.mistore.jp/shopping/feature/shops_f3/fukubukuro_list_sp", urlLabel:"三越伊勢丹オンラインストア（公式）" },
   { id:"daimaru", brand:"大丸松坂屋", name:"大丸松坂屋 福袋 2027", price:null, priceLabel:"ブランドごとに設定", worth:null,
@@ -1224,13 +1224,13 @@ document.getElementById("favOnly").addEventListener("click", function(){
 });
 
 var BF_ITEMS = [
-  { store:"イオン", name:"イオン 超！ブラックフライデーフェス", badge:"店頭本番は11月20日〜", badgeCls:"soon",
+  { store:"イオン", name:"イオン 超！ブラックフライデーフェス", badge:"開催中", badgeCls:"",
     period:"店頭：11月20日（金）〜11月30日（月）／ネット先行：10月31日〜11月16日 9:59",
-    note:"本州（東北地区除く）・四国のイオン・イオンスタイル直営売場。ネット先行（10/31 10:00〜11/16 9:59）は終了。店頭の本番は11月20日から。",
+    note:"本州（東北地区除く）・四国のイオン・イオンスタイル直営売場で開催中。ネット先行（10/31 10:00〜11/16 9:59）は終了。期間合計税込10万円以上の購入でWAON POINT基本の20倍などポイント企画も実施。",
     url:"https://chirashi.otoku.aeonsquare.net/blackfriday/", linkLabel:"イオン特設サイト" },
-  { store:"Amazon", name:"Amazon ブラックフライデー", badge:"詳細は11月19日発表", badgeCls:"soon",
-    period:"2026年11月開催（期間などの詳細は11月19日午前に発表）",
-    note:"年末最後のビッグセール。食品・日用品から家電、人気ブランドまで特別価格になると発表済み。開始日と目玉商品は11月19日の詳細発表で更新します。",
+  { store:"Amazon", name:"Amazon ブラックフライデー", badge:"先行11/27〜・本番11/30〜", badgeCls:"soon",
+    period:"先行：11月27日（金）0:00〜11月29日（日）23:59／本セール：11月30日（月）0:00〜12月7日（月）23:59",
+    note:"年内最後のビッグセール。ポイントアップキャンペーンは11月19日10:00からエントリー受付中（買い物対象期間は11月27日〜12月7日、合計税込¥10,000以上で最大11％還元・上限10,000pt）。ポイントDeal祭り、dポイント連携キャンペーン（総額5,000万pt山分け）も実施。Beauty Collection Boxは11月30日〜12月3日に各日12時から数量限定発売。",
     url:"https://www.aboutamazon.jp/news/retail/amazon-black-friday-2026", linkLabel:"公式発表（About Amazon）" },
   { store:"Yahoo!ショッピング", name:"ブラックフライデー 2026", badge:"11月22日開始", badgeCls:"soon",
     period:"11月22日（日）0:00〜11月29日（日）25:59",
@@ -1260,11 +1260,11 @@ var BF_ITEMS = [
     period:"11月11日（水）〜11月23日（月）",
     note:"全国のカインズ店舗で開催中。日用品や家電などをお手ごろ価格で販売。11月14日・15日は213店舗で税込3,000円以上の購入者にカインズバッグをプレゼント。オンラインショップ限定セールも同時開催。",
     url:"https://www.cainz.com/contents/sale/blackfriday.html", linkLabel:"カインズ 特設サイト" },
-  { store:"ユニクロ", name:"ユニクロ感謝祭", badge:"11月20日開始", badgeCls:"soon",
+  { store:"ユニクロ", name:"ユニクロ感謝祭", badge:"開催中", badgeCls:"",
     period:"11月20日（金）〜11月26日（木）",
     note:"ブラックフライデー時期の7日間の感謝祭。初日11月20日は来店先着で木村屋總本店の「UNIQLOあんぱん」をプレゼント。11月20日〜23日は税込10,000円以上の購入で「パッカブルビッグトートバッグ」をプレゼント。UNIQLO and Cecilie Bahnsen 2026年秋冬コレクションも11月20日発売。",
     url:"https://www.uniqlo.com/jp/ja/special-feature/kanshasai", linkLabel:"ユニクロ 特設ページ" },
-  { store:"Google ストア", name:"Google ストア ブラックフライデーセール", badge:"11月20日開始", badgeCls:"soon",
+  { store:"Google ストア", name:"Google ストア ブラックフライデーセール", badge:"開催中", badgeCls:"",
     period:"11月20日（金）7:00〜12月3日（木）6:59",
     note:"Pixel 11 Pro XLは2万円引き＋最大25,000円分のストアポイント、Pixel 11 Pro Foldは最大45,000円分のポイント。下取りと組み合わせると実質最大14万5,000円分お得。直営店のGoogle Store 表参道でも同じ内容。",
     url:"https://store.google.com/jp/magazine/black-friday-deals?hl=ja", linkLabel:"Google ストア 特設ページ" }
